@@ -17,6 +17,16 @@ FORM_EMBED = (f'<iframe src="https://api.leadconnectorhq.com/widget/form/{FORM_I
               f'data-layout-iframe-id="inline-{FORM_ID}" data-form-id="{FORM_ID}" title="Get a cash offer"></iframe>'
               f'<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>')
 
+# Step 2 form (GHL form "Seller Step 2"). Set the id once the form exists in GHL.
+STEP2_FORM_ID = ""
+STEP2_EMBED = (f'<iframe src="https://api.leadconnectorhq.com/widget/form/{STEP2_FORM_ID}" '
+               f'style="width:100%;height:900px;border:none;border-radius:8px" id="inline-{STEP2_FORM_ID}" '
+               f'data-layout="{{\'id\':\'INLINE\'}}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" '
+               f'data-deactivation-type="neverDeactivate" data-form-name="Seller Step 2" data-height="900" '
+               f'data-layout-iframe-id="inline-{STEP2_FORM_ID}" data-form-id="{STEP2_FORM_ID}" title="Tell us about the house"></iframe>'
+               f'<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>') if STEP2_FORM_ID else (
+               '<p>Thanks! We have your info and will call you within 24 hours.</p>')
+
 OLD_PHONES = [r"\(?904\)?[\s.-]*513[\s.-]*0229", r"\(?904\)?[\s.-]*245[\s.-]*1663",
               r"\(?904\)?[\s.-]*685[\s.-]*8754", r"\(?904\)?[\s.-]*565[\s.-]*2935",
               r"\(?904\)?[\s.-]*685[\s.-]*8024"]
@@ -124,7 +134,7 @@ def main():
     # core pages
     for slug, (title, desc, body, schema, robots) in B.PAGES.items():
         head, body_html = B.shell(slug, title, desc, body, schema, robots)
-        write(slug, doc(head, body_html.replace("{{FORM_EMBED}}", FORM_EMBED)))
+        write(slug, doc(head, body_html.replace("{{FORM_EMBED}}", FORM_EMBED).replace("{{STEP2_EMBED}}", STEP2_EMBED)))
         if robots.startswith("index"):
             sitemap.append((SITE + slug, today, "1.0" if slug == "/" else "0.8"))
 
@@ -221,7 +231,7 @@ def main():
                               '<section class="hero"><div class="wrap" style="display:block"><h1>That page moved</h1><p class="lead">Let\'s get you where you were going.</p>'
                               '<a class="call" href="/">Go to the homepage</a></div></section>' + B.cta(), robots="noindex,follow")
     with open(os.path.join(DIST, "404.html"), "w") as f:
-        f.write(doc(head, body_html.replace("{{FORM_EMBED}}", FORM_EMBED)))
+        f.write(doc(head, body_html.replace("{{FORM_EMBED}}", FORM_EMBED).replace("{{STEP2_EMBED}}", STEP2_EMBED)))
 
     # sitemap / robots / CNAME / favicon / nojekyll
     with open(os.path.join(DIST, "sitemap.xml"), "w") as f:

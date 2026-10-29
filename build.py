@@ -392,6 +392,17 @@ page("/thank-you/", "Thank You | Jax Cash Buyers",
 <section><div class="wrap" style="max-width:860px"><h2>Quick answers</h2>{faq_html}</div></section>""",
      robots="noindex,follow")
 
+# ---------- STEP 2 (shown after the main form; motivated sellers fill this out) ----------
+page("/step-2/", "One More Step | Jax Cash Buyers",
+     "Tell us a little more about your house so we can make you a stronger cash offer, faster.",
+     f"""<section class="hero"><div class="wrap" style="display:block;max-width:760px"><h1>Almost done! One more step</h1>
+<p class="lead">We got your info. Answer a few quick questions about the house and we can get you a stronger, faster cash offer. It takes about 60 seconds.</p></div></section>
+<section><div class="wrap" style="max-width:760px"><div class="card" id="offer"><h2>Tell Us About the House</h2>
+<p class="sub">Everything stays confidential. No obligation.</p>
+<div class="formslot">{{{{STEP2_EMBED}}}}</div>
+<p class="sub" style="margin-top:10px">Rather talk it through? Call <a href="tel:{TEL}"><b>{PHONE}</b></a></p></div></div></section>""",
+     robots="noindex,follow")
+
 # ---------- LEGAL ----------
 page("/privacy-policy/", "Privacy Policy | Jax Cash Buyers",
      "Privacy policy for Jax Cash Buyers: what information we collect, how we use it, and your text message and email choices.",
