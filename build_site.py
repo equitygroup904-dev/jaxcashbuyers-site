@@ -228,6 +228,9 @@ def main():
         for loc, lm, pr in sitemap:
             f.write(f"<url><loc>{loc}</loc><lastmod>{lm}</lastmod><priority>{pr}</priority></url>\n")
         f.write("</urlset>\n")
+    with open(os.path.join(DIST, "sitemap_index.xml"), "w") as f:
+        f.write('<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+                f'<sitemap><loc>{SITE}/sitemap.xml</loc><lastmod>{today}</lastmod></sitemap>\n</sitemapindex>\n')
     with open(os.path.join(DIST, "robots.txt"), "w") as f:
         f.write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
     with open(os.path.join(DIST, "CNAME"), "w") as f:
