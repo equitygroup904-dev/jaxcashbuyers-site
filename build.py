@@ -179,7 +179,7 @@ def shell(slug, title, desc, body, extra_schema=None, robots="index,follow"):
 <a href="tel:{TEL}">{PHONE}</a> · <a href="mailto:{EMAIL}">{EMAIL}</a><p>Local, veteran-owned home buyers helping North Florida homeowners since 2007.</p></div>
 <div><b style="color:#fff">Sell your house</b><br><a href="/get-a-cash-offer-today/">Get a cash offer</a><br><a href="/how-we-buy-houses/">How it works</a><br><a href="/avoiding-foreclosure/">Foreclosure</a><br><a href="/selling-inherited-home/">Inherited house</a><br><a href="/selling-house-during-probate/">Probate</a><br><a href="/selling-home-during-divorce/">Divorce</a></div>
 <div><b style="color:#fff">Company</b><br><a href="/our-company/">About</a><br><a href="/testimonials/">Reviews</a><br><a href="/faq/">FAQ</a><br><a href="/blog/">Blog</a><br><a href="/contact-us/">Contact</a><br><a href="/privacy-policy/">Privacy</a> · <a href="/terms-and-conditions/">Terms</a></div></div>
-<div class="wrap" style="margin-top:18px;font-size:13px">© 2026 Jax Cash Buyers. A division of American Equity Group LLC. We are home buyers, not real estate agents.</div></footer>
+<div class="wrap" style="margin-top:18px;font-size:13px">© 2026 Jax Cash Buyers. We are home buyers, not real estate agents.</div></footer>
 <a class="stickycall" href="tel:{TEL}">Call {PHONE}</a>"""
     return head, body_html
 
@@ -396,7 +396,7 @@ page("/thank-you/", "Thank You | Jax Cash Buyers",
 page("/privacy-policy/", "Privacy Policy | Jax Cash Buyers",
      "Privacy policy for Jax Cash Buyers: what information we collect, how we use it, and your text message and email choices.",
      f"""<section><div class="wrap legal"><h1>Privacy Policy</h1><p><i>Last updated: October 27, 2026</i></p>
-<p>Jax Cash Buyers, a division of American Equity Group LLC ("we," "us"), respects your privacy. This policy explains what we collect on jaxcashbuyers.com and how we use it.</p>
+<p>Jax Cash Buyers ("we," "us") respects your privacy. This policy explains what we collect on jaxcashbuyers.com and how we use it.</p>
 <h3>Information we collect</h3><p>Information you give us, such as your name, phone number, email and property address, and basic usage data like pages visited and browser type.</p>
 <h3>How we use it</h3><p>To respond to you, evaluate your property, make an offer, and send updates you've agreed to receive. We do not sell your personal information.</p>
 <h3>Text messages</h3><p>If you agree to receive texts, message frequency varies and message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of any purchase. Mobile numbers and SMS consent are not shared with third parties or affiliates for marketing purposes.</p>
