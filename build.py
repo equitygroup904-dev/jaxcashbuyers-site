@@ -365,7 +365,7 @@ situation("/selling-home-during-divorce/", "Selling a House During Divorce in Ja
 # ---------- CITY PAGES ----------
 for key, (city, county, near) in CITY_PAGES.items():
     slug = f"/sell-my-house-fast-{key}/"
-    page(slug, f"Sell My House Fast {city} FL | Cash Home Buyers"[:65],
+    page(slug, f"Sell My House Fast {city} FL | Jax Cash Buyers"[:65],
          f"Sell your {city}, FL house fast for cash. Fair as-is offer in 24 hours, no fees, close in as little as 7 days. Call (904) 750-3565.",
          hero(f"Sell Your House Fast in {city}, FL",
               f"We buy houses in {city} and across {county} County for cash, in any condition.",
