@@ -24,7 +24,7 @@ One new post per week, published automatically (James approved auto-publish with
 - Include: the keyword in the title, first paragraph and one H2; one internal link to a matching page
   (/avoiding-foreclosure/, /selling-inherited-home/, /selling-house-during-probate/, /selling-home-during-divorce/,
   /compare/, /how-we-buy-houses/, or a /sell-my-house-fast-<city>/ page) and one to /get-a-cash-offer-today/.
-- Phone is always (904) 685-8024. Company name: Jax Cash Buyers.
+- Phone is always (904) 750-3565. Company name: Jax Cash Buyers.
 
 ## Guardrails (never break)
 - No made-up statistics, prices, dates, laws or case numbers. If a fact needs a source, leave it out or say "check with your attorney/county".

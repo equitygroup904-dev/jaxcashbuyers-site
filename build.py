@@ -5,8 +5,8 @@ In GHL: page settings get title/meta; body goes in a Custom Code element.
 {{FORM_EMBED}} is swapped for the GHL lead form embed once the form exists."""
 import json, os, html
 
-PHONE = "(904) 685-8024"
-TEL = "+19046858024"
+PHONE = "(904) 750-3565"
+TEL = "+19047503565"
 EMAIL = "sales@jaxcashbuyers.com"
 ADDR = {"street": "4600 Touchton Rd E, Suite 1150", "city": "Jacksonville", "zip": "32246"}
 SITE = "https://www.jaxcashbuyers.com"
@@ -195,7 +195,7 @@ def page(slug, title, desc, body, schema=None, robots="index,follow"):
 
 # ---------- HOME ----------
 page("/", "Sell My House Fast Jacksonville FL | Cash Offer in 24 Hrs",
-     "Sell your Jacksonville house fast for cash. Fair offer in 24 hours, no repairs, no commissions, close in as little as 7 days. Call (904) 685-8024.",
+     "Sell your Jacksonville house fast for cash. Fair offer in 24 hours, no repairs, no commissions, close in as little as 7 days. Call (904) 750-3565.",
      hero("Sell Your House Fast in Jacksonville for Cash",
           "Get a fair, as-is cash offer in 24 hours. Skip the agents, repairs and months of waiting.",
           ["No repairs or cleaning", "No commissions or fees. We pay closing costs", "Close in as little as 7 days, or on your date", "Local and veteran-owned since 2007"])
@@ -210,7 +210,7 @@ page("/", "Sell My House Fast Jacksonville FL | Cash Offer in 24 Hrs",
 
 # ---------- CASH OFFER ----------
 page("/get-a-cash-offer-today/", "Get a Cash Offer for Your House | Jacksonville & St. Augustine",
-     "Get a free, no-obligation cash offer for your Jacksonville or St. Augustine house. Any condition. Close on your timeline. Call (904) 685-8024.",
+     "Get a free, no-obligation cash offer for your Jacksonville or St. Augustine house. Any condition. Close on your timeline. Call (904) 750-3565.",
      hero("Get Your Fair Cash Offer Today",
           "Fill out the form and we'll call you within 24 hours to go over your house and your options.",
           ["Any condition, any situation", "No fees, no commissions", "You choose the closing date", "Zero obligation"])
@@ -222,7 +222,7 @@ page("/get-a-cash-offer-today/", "Get a Cash Offer for Your House | Jacksonville
 
 # ---------- SELL FAST JAX ----------
 page("/sell-your-house-fast-jacksonville/", "Sell Your House Fast Jacksonville | We Buy Houses As-Is",
-     "Need to sell your house fast in Jacksonville? We buy as-is for cash. No repairs, no fees, close in as little as 7 days. Call (904) 685-8024.",
+     "Need to sell your house fast in Jacksonville? We buy as-is for cash. No repairs, no fees, close in as little as 7 days. Call (904) 750-3565.",
      hero("We Buy Houses in Jacksonville As-Is, for Cash",
           "Find out in 24 hours what we can pay for your Jacksonville house. No repairs, no agents, no waiting.",
           ["Behind on payments or facing foreclosure", "Inherited or vacant house", "Tenants you can't get out", "Repairs you can't afford"])
@@ -236,7 +236,7 @@ page("/sell-your-house-fast-jacksonville/", "Sell Your House Fast Jacksonville |
 
 # ---------- WE BUY HOUSES JAX ----------
 page("/we-buy-houses-jacksonville-florida/", "We Buy Houses Jacksonville Florida | Jax Cash Buyers",
-     "We buy houses in Jacksonville, Florida for cash, in any condition. Fair offer in 24 hours and no fees. Call Jax Cash Buyers at (904) 685-8024.",
+     "We buy houses in Jacksonville, Florida for cash, in any condition. Fair offer in 24 hours and no fees. Call Jax Cash Buyers at (904) 750-3565.",
      hero("We Buy Houses in Jacksonville, Florida",
           "Cash for houses in any condition, anywhere in Duval County and the surrounding areas.",
           ["Single-family, duplexes, mobile homes and land", "Occupied, vacant or tenant-occupied", "Liens, back taxes or code violations", "No repairs and no fees"])
@@ -252,7 +252,7 @@ page("/how-we-buy-houses/", "How We Buy Houses in Jacksonville | Simple 3-Step P
           ["Offer usually within 24 hours", "Close in as little as 7 days", "Local title company closing", "No fees or commissions"], form=False)
      + steps()
      + """<section class="alt"><div class="wrap"><h2>The details</h2>
-<h3>1. Tell us about your house</h3><p>Fill out our short form or call (904) 685-8024. We'll ask about the address, condition, your timeline and any mortgage or liens. Everything stays confidential.</p>
+<h3>1. Tell us about your house</h3><p>Fill out our short form or call (904) 750-3565. We'll ask about the address, condition, your timeline and any mortgage or liens. Everything stays confidential.</p>
 <h3>2. One walkthrough, then a written offer</h3><p>We schedule a short visit at a time that works for you. We look at repairs, the location and recent sales of similar homes nearby, and then give you a fair all-cash offer, usually within 24 hours. There's no pressure and no obligation.</p>
 <h3>3. You pick the closing date</h3><p>If you accept, we open title with a local, neutral title company. They handle payoffs, liens and paperwork. You show up, sign, and get paid. That can be as soon as 7 days, or weeks or months out if you need time to move.</p>
 <h3>What you don't have to do</h3><ul><li>No repairs, painting or cleaning</li><li>No showings or open houses</li><li>No commissions or closing costs</li><li>No waiting on a buyer's bank</li></ul></div></section>"""
@@ -310,8 +310,8 @@ page("/our-company/", "About Jax Cash Buyers | Local, Veteran-Owned Home Buyers"
      + testimonials(2) + cta())
 
 # ---------- CONTACT ----------
-page("/contact-us/", "Contact Jax Cash Buyers | (904) 685-8024",
-     "Contact Jax Cash Buyers in Jacksonville. Call (904) 685-8024 or send us a message about selling your house fast for cash.",
+page("/contact-us/", "Contact Jax Cash Buyers | (904) 750-3565",
+     "Contact Jax Cash Buyers in Jacksonville. Call (904) 750-3565 or send us a message about selling your house fast for cash.",
      hero("Let's Talk", "Questions about our process, foreclosure, an inherited house, or anything else? Call or send us a message.",
           [f"Call or text {PHONE}", f"Email {EMAIL}", "We reply quickly. Calls are fastest"])
      + f"""<section><div class="wrap grid2"><div><h2>Contact info</h2><p><b>Jax Cash Buyers</b><br>{ADDR['street']}<br>{ADDR['city']}, FL {ADDR['zip']}</p>
@@ -324,7 +324,7 @@ def situation(slug, title, desc, h1, lead, bullets, body):
          + steps() + testimonials(2) + cta())
 
 situation("/avoiding-foreclosure/", "Stop Foreclosure in Jacksonville FL | Sell Before the Auction",
-          "Facing foreclosure in Jacksonville? Learn your options and how a fast cash sale can protect your credit. Free, confidential help: (904) 685-8024.",
+          "Facing foreclosure in Jacksonville? Learn your options and how a fast cash sale can protect your credit. Free, confidential help: (904) 750-3565.",
           "Facing Foreclosure in Jacksonville?", "You have more options than you think, and less time than you'd like. Let's look at them together.",
           ["Free, confidential review of your options", "We can often close before the sale date", "No fees. We pay closing costs"],
           """<h2>Your options when you're behind on payments</h2>
@@ -336,7 +336,7 @@ situation("/avoiding-foreclosure/", "Stop Foreclosure in Jacksonville FL | Sell 
 <p>Every situation is different. Call us and we'll walk through it honestly, even if selling to us isn't the right answer.</p>""")
 
 situation("/selling-inherited-home/", "Sell an Inherited House Fast in Jacksonville | As-Is Cash",
-          "Inherited a house in Jacksonville? Sell it as-is for cash. No cleanout, no repairs, no fees. We work with heirs and estates. Call (904) 685-8024.",
+          "Inherited a house in Jacksonville? Sell it as-is for cash. No cleanout, no repairs, no fees. We work with heirs and estates. Call (904) 750-3565.",
           "Sell Your Inherited House in Jacksonville", "Skip the cleanout, repairs and months of carrying costs. We buy inherited houses as-is.",
           ["Leave the belongings behind", "Out-of-state heirs welcome", "We work with your attorney and title company"],
           """<h2>A simple way to settle an inherited house</h2>
@@ -345,7 +345,7 @@ situation("/selling-inherited-home/", "Sell an Inherited House Fast in Jacksonvi
 <h3>Is probate required?</h3><p>Often, yes, before the house can be sold. See our <a href="/selling-house-during-probate/">probate page</a>. We can make an offer while probate is in progress and close when the court allows.</p>""")
 
 situation("/selling-house-during-probate/", "Sell a House During Probate in Jacksonville FL | Cash Buyers",
-          "Selling a probate house in Jacksonville? We buy probate properties as-is and work with personal representatives and attorneys. (904) 685-8024.",
+          "Selling a probate house in Jacksonville? We buy probate properties as-is and work with personal representatives and attorneys. (904) 750-3565.",
           "Selling a House During Probate", "We help personal representatives sell estate property quickly and cleanly, in any condition.",
           ["Offer during probate, close when cleared", "As-is, no cleanout", "We work with your probate attorney"],
           """<h2>How a probate sale works with us</h2>
@@ -366,7 +366,7 @@ situation("/selling-home-during-divorce/", "Selling a House During Divorce in Ja
 for key, (city, county, near) in CITY_PAGES.items():
     slug = f"/sell-my-house-fast-{key}/"
     page(slug, f"Sell My House Fast {city} FL | Cash Home Buyers"[:65],
-         f"Sell your {city}, FL house fast for cash. Fair as-is offer in 24 hours, no fees, close in as little as 7 days. Call (904) 685-8024.",
+         f"Sell your {city}, FL house fast for cash. Fair as-is offer in 24 hours, no fees, close in as little as 7 days. Call (904) 750-3565.",
          hero(f"Sell Your House Fast in {city}, FL",
               f"We buy houses in {city} and across {county} County for cash, in any condition.",
               ["No repairs or cleaning", "No commissions or fees", "Close in as little as 7 days", f"Local buyers serving {county} County"])

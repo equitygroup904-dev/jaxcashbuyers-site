@@ -18,7 +18,8 @@ FORM_EMBED = (f'<iframe src="https://api.leadconnectorhq.com/widget/form/{FORM_I
               f'<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>')
 
 OLD_PHONES = [r"\(?904\)?[\s.-]*513[\s.-]*0229", r"\(?904\)?[\s.-]*245[\s.-]*1663",
-              r"\(?904\)?[\s.-]*685[\s.-]*8754", r"\(?904\)?[\s.-]*565[\s.-]*2935"]
+              r"\(?904\)?[\s.-]*685[\s.-]*8754", r"\(?904\)?[\s.-]*565[\s.-]*2935",
+              r"\(?904\)?[\s.-]*685[\s.-]*8024"]
 
 REDIRECTS = {
     "/generic-homepage/": "/", "/home-2/": "/", "/sitemap/": "/",
