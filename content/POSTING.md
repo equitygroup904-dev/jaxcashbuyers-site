@@ -53,6 +53,10 @@ It makes a 1200x630 card: a photo for the topic (img/blog-bg/), the title, a gre
 circle and the phone number. Open the image and check the title is fully visible and readable before publishing.
 Never use photos of sellers or anyone other than James, and never AI-generate images of real people.
 
+## Monthly Google offer (separate task)
+On the first Monday of each month a separate task posts a Google Business "Offer" (free cash offer in 24 hours) with its
+own cover `img/blog/offer-YYYY-MM.jpg` made by `python3 tools/make_cover.py general "Free Cash Offer in 24 Hours — No Repairs, No Fees" img/blog/offer-YYYY-MM.jpg`.
+
 ## Guardrails (never break)
 - No made-up statistics, prices, dates, laws or case numbers. If a fact needs a source, leave it out or say "check with your attorney/county".
 - No fake testimonials or quotes. No promises of a price, a closing date, or that we buy every house.
@@ -70,7 +74,9 @@ Never use photos of sellers or anyone other than James, and never AI-generate im
      scheduleDate = now + 15 minutes (UTC ISO), media [{url: "https://www.jaxcashbuyers.com/img/blog/<slug>.jpg", type: "image/jpeg"}],
      userId = James Stallworth's GHL user id (look it up with the users operations; if it can't be found, try without it).
    - Google caption: 2–3 sentences (under 1,400 characters) summarizing the post, ending with "Read more:" + the post URL
-     and "Call (904) 750-3565". gmbPostDetails {gmbEventType "STANDARD", actionType "learn_more", url: <post URL>}.
+     and "Call (904) 750-3565". gmbPostDetails {gmbEventType "STANDARD", actionType "learn_more", url: <post URL>} on
+     TUESDAY posts; on FRIDAY posts use actionType "call" (Google shows a "Call now" button with the business phone; no url needed)
+     and end the caption with the post URL instead.
    - Facebook caption: 3–5 short sentences, a question to the reader, the post URL, "Call or text (904) 750-3565",
      and 3–5 local hashtags (e.g. #Jacksonville #JaxRealEstate #SellMyHouseFast). facebookPostDetails {type "post"}.
    - idempotencyKey "blog-<slug>-gmb" / "blog-<slug>-fb".
