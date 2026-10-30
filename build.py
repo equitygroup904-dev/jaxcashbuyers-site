@@ -317,7 +317,9 @@ page("/contact-us/", "Contact Jax Cash Buyers | (904) 750-3565",
           [f"Call or text {PHONE}", f"Email {EMAIL}", "We reply quickly. Calls are fastest"])
      + f"""<section><div class="wrap grid2"><div><h2>Contact info</h2><p><b>Jax Cash Buyers</b><br>{ADDR['street']}<br>{ADDR['city']}, FL {ADDR['zip']}</p>
 <p>Phone: <a href="tel:{TEL}">{PHONE}</a><br>Email: <a href="mailto:{EMAIL}">{EMAIL}</a></p></div>
-<div><h2>Good to know</h2><p>We'll never pressure you. Ask us anything, even just to make sure we're real people.</p></div></div></section>""")
+<div><h2>Good to know</h2><div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-bottom:12px"><img src="/img/james-stallworth.jpg" alt="James Stallworth, owner of Jax Cash Buyers, holding a SOLD sign" width="200" height="200" loading="lazy" style="width:200px;height:200px;object-fit:cover;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.15)">
+<p style="margin:0"><b>James Stallworth</b><br>Owner, Jax Cash Buyers<br>Local and veteran-owned</p></div>
+<p>We'll never pressure you. Ask us anything, even just to make sure we're real people.</p></div></div></section>""")
 
 # ---------- SITUATIONS ----------
 def situation(slug, title, desc, h1, lead, bullets, body):
