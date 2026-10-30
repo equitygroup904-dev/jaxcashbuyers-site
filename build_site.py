@@ -171,7 +171,7 @@ def main():
             desc = re.sub(r"\s+", " ", txt)[:150].rsplit(" ", 1)[0] + "…"
         desc = desc[:158]
         date = p["dt"][:10]
-        cover = imgmap.get(p["i"]) if p.get("i") else None
+        cover = (p["i"] if p.get("i", "").startswith("/img/") else imgmap.get(p["i"])) if p.get("i") else None
         content_html = markdown.markdown(body_md, extensions=["extra", "sane_lists"])
         # duplicate-title posts (Carrot's "-2" copies) point canonical at the first copy
         key = title.lower()
@@ -185,12 +185,16 @@ def main():
             art["image"] = SITE + cover
         body = (f'<article class="post"><h1>{html.escape(title)}</h1>'
                 f'<div class="meta">{datetime.date.fromisoformat(date).strftime("%B %-d, %Y")} · Jax Cash Buyers</div>'
+                + (f'<img src="{cover}" alt="{html.escape(title)}" width="1200" height="630">' if cover and cover.startswith("/img/blog/") else '')
+                + f''
                 f'{content_html}'
                 f'<div class="postcta"><h2 style="margin-top:0">Need to sell your house fast?</h2>'
                 f'<p>Get a fair, as-is cash offer in 24 hours. No repairs, no fees, close on your date.</p>'
                 f'<a class="call" href="/get-a-cash-offer-today/" style="display:inline-block">Get My Cash Offer</a> '
                 f'&nbsp; or call <a href="tel:{B.TEL}"><b>{B.PHONE}</b></a></div></article>')
         head, body_html = B.shell(new, seo_title, desc, body, [art], robots)
+        if cover:
+            head = re.sub(r'<meta property="og:image" content="[^"]*">', f'<meta property="og:image" content="{SITE + cover}">', head)
         if canonical_slug != new:
             head = head.replace(f'<link rel="canonical" href="{SITE+new}">', f'<link rel="canonical" href="{SITE+canonical_slug}">')
         write(new, doc(head, body_html, BLOG_CSS))
