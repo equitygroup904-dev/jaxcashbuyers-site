@@ -37,7 +37,7 @@ a{color:var(--green-d)}.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
 .logo{color:#fff;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:.3px}.logo span{color:#7fd6a1}
 .nav{display:flex;gap:18px;flex-wrap:wrap}.nav a{color:#dbe6f2;text-decoration:none;font-size:15px}.nav a:hover{color:#fff}
 .call{background:var(--green);color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:8px;white-space:nowrap}
-.hero{background:linear-gradient(135deg,#0f2a47 0%,#173d66 100%);color:#fff;padding:48px 0}
+.hero{background:linear-gradient(135deg,rgba(15,42,71,.88) 0%,rgba(23,61,102,.78) 100%),url(/img/jax-skyline-hero.webp) center 60%/cover no-repeat #0f2a47;color:#fff;padding:48px 0}.hero.plain{background:linear-gradient(135deg,#0f2a47 0%,#173d66 100%)}
 .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:start}
 .hero h1{font-size:40px;line-height:1.15;margin:0 0 14px}.hero p.lead{font-size:19px;color:#dbe6f2;margin:0 0 18px}
 .checks{list-style:none;padding:0;margin:0 0 20px}.checks li{padding-left:28px;position:relative;margin:6px 0}
@@ -89,10 +89,11 @@ def form_card(title="Get Your Fair Cash Offer", sub="Tell us about the house. We
 <p class="sub" style="margin-top:10px">Prefer to talk? Call <a href="tel:{TEL}"><b>{PHONE}</b></a></p></div>"""
 
 
-def hero(h1, lead, bullets, form=True):
+def hero(h1, lead, bullets, form=True, photo=True):
     li = "".join(f"<li>{b}</li>" for b in bullets)
     right = form_card() if form else ""
-    return f"""<section class="hero"><div class="wrap"><div><h1>{h1}</h1><p class="lead">{lead}</p>
+    cls = "hero" if photo else "hero plain"
+    return f"""<section class="{cls}"><div class="wrap"><div><h1>{h1}</h1><p class="lead">{lead}</p>
 <ul class="checks">{li}</ul><a class="call" href="tel:{TEL}">Call {PHONE}</a></div>{right}</div></section>"""
 
 
@@ -369,7 +370,7 @@ for key, (city, county, near) in CITY_PAGES.items():
          f"Sell your {city}, FL house fast for cash. Fair as-is offer in 24 hours, no fees, close in as little as 7 days. Call (904) 750-3565.",
          hero(f"Sell Your House Fast in {city}, FL",
               f"We buy houses in {city} and across {county} County for cash, in any condition.",
-              ["No repairs or cleaning", "No commissions or fees", "Close in as little as 7 days", f"Local buyers serving {county} County"])
+              ["No repairs or cleaning", "No commissions or fees", "Close in as little as 7 days", f"Local buyers serving {county} County"], photo=(county == "Duval"))
          + f"""<section><div class="wrap" style="max-width:900px"><h2>We buy houses in {city}</h2>
 <p>Need to sell a house in {city} without the hassle of listing? Jax Cash Buyers buys homes in {city}, {near[0]}, {near[1]}, {near[2]} and the rest of {county} County, as-is and for cash.</p>
 <p>We help homeowners who are behind on payments, have inherited a house, are going through probate or divorce, are tired of being a landlord, or own a house that needs more repairs than they want to take on. Whatever the reason, you get one fair offer and a closing date you choose.</p>
