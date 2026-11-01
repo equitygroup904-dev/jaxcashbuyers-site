@@ -57,10 +57,17 @@ table.cmp th{background:var(--navy);color:#fff}table.cmp td:last-child{font-weig
 details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}summary{font-weight:700;cursor:pointer}
 footer{background:#0b1f35;color:#b9c6d4;padding:36px 0;font-size:15px}footer a{color:#dbe6f2}footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px}
 .formslot{min-height:420px}.legal{max-width:820px}
-.tl{list-style:none;padding:0;margin:24px 0 0;position:relative}.tl:before{content:"";position:absolute;left:21px;top:8px;bottom:8px;width:2px;background:var(--line)}
-.tl li{display:flex;gap:18px;margin:0 0 26px;position:relative}.tl li:last-child{margin-bottom:0}
-.tl-n{flex:0 0 44px;height:44px;border-radius:50%;background:var(--green);color:#fff;font-weight:800;font-size:19px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px #fff}
-.tl-b h3{margin:2px 0 6px}.tl-b p{margin:0}
+.eyebrow{color:var(--green);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 6px}.intro{color:var(--mute);font-size:18px;max-width:680px;margin:0 0 28px}
+.stats{background:var(--navy);color:#fff;padding:22px 0}.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center}.stats b{display:block;font-size:30px;line-height:1.1;color:#7fd6a1}.stats span{font-size:14px;color:#dbe6f2}
+.hsteps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.hs{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;position:relative;box-shadow:0 4px 16px rgba(15,42,71,.06)}.hs h3{margin:4px 0 8px}.hs p{margin:0 0 12px;color:var(--mute)}
+.hs-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.hs-n{font-size:44px;font-weight:800;line-height:1;color:var(--line)}
+.hs-ic{display:inline-flex;width:52px;height:52px;border-radius:12px;background:#e8f5ed;color:var(--green-d);align-items:center;justify-content:center}
+.checks.dark{margin:0;font-size:15px}.checks.dark li{margin:4px 0}.checks.dark li:before{color:var(--green)}
+.box.ic .hs-ic{margin-bottom:10px}
+.meet{display:grid;grid-template-columns:240px 1fr;gap:36px;align-items:center}.meet img{width:240px;height:240px;object-fit:cover;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+@media(max-width:1000px){.hsteps{grid-template-columns:1fr 1fr}}
+@media(max-width:860px){.hsteps,.meet{grid-template-columns:1fr}.stats .wrap{grid-template-columns:1fr 1fr}.meet img{width:180px;height:180px}}
 .stickycall{display:none}
 @media(max-width:860px){.hero .wrap,.grid3,.grid2,footer .cols{grid-template-columns:1fr}.hero h1{font-size:31px}h2{font-size:25px}.nav{display:none}
  .stickycall{display:block;position:fixed;left:0;right:0;bottom:0;background:var(--green);color:#fff;text-align:center;font-weight:800;padding:14px;text-decoration:none;z-index:50}body{padding-bottom:52px}}
@@ -250,15 +257,33 @@ page("/we-buy-houses-jacksonville-florida/", "We Buy Houses Jacksonville Florida
      + steps() + areas_block() + cta())
 
 # ---------- HOW IT WORKS ----------
+def icon(path):
+    return f'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{path}</svg>'
+
+
+IC = {
+    "phone": '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>',
+    "house": '<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/>',
+    "doc": '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/>',
+    "key": '<circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.3-9.3M17 6l3 3M15 8l2 2"/>',
+    "chart": '<path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/>',
+    "tool": '<path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 8-8-1.3-1.3a4 4 0 0 0-5-5L13 5z"/><path d="M3 21l6-6"/>',
+    "pin": '<path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>',
+}
+
 HIW_STEPS = [
-    ("Today", "Tell us about the house",
-     f"Fill out the short form or call {PHONE}. We'll ask about the address, condition, your timeline and any mortgage or liens. It takes about two minutes, and everything stays confidential."),
-    ("Within 24 hours", "One walkthrough, then a written offer",
-     "We set up one short visit at a time that works for you. No cleaning or staging. We look at the repairs, the location and recent sales of similar homes nearby, then give you a written all-cash offer and walk you through how we got the number."),
-    ("You decide", "Take it or leave it",
-     "No pressure and no obligation. Ask questions, compare it to listing, talk it over with family. If it doesn't work for you, no hard feelings."),
-    ("As soon as 7 days", "Close on your date and get paid",
-     "If you accept, a local, neutral title company opens title and handles payoffs, liens and paperwork. You sign and get paid at closing, as soon as 7 days or weeks or months out if you need time to move."),
+    ("phone", "Today · 2 minutes", "Tell us about the house",
+     f"Fill out the short form or call {PHONE}. A real person from our local team calls you back.",
+     ["The address and rough condition", "Your timeline and why you're selling", "Any mortgage, liens or back taxes"]),
+    ("house", "At a time that works for you", "One short walkthrough",
+     "We come out once, at a time that works for you. Don't clean, paint or stage anything. We've seen it all.",
+     ["Just one visit, no showings", "No cleaning or repairs first", "Tenants or belongings inside are fine"]),
+    ("doc", "Usually within 24 hours", "Get a written cash offer",
+     "We send you a written all-cash offer and walk you through exactly how we got the number. No pressure, no obligation.",
+     ["Based on repairs, location and nearby sales", "Compare it to listing if you want", "Take your time deciding"]),
+    ("key", "As soon as 7 days", "Close on your date and get paid",
+     "If you say yes, a local, neutral title company handles payoffs, liens and paperwork. You sign and get paid at closing.",
+     ["You pick the closing date", "We pay normal closing costs", "Take what you want, leave the rest"]),
 ]
 HIW_FAQS = [
     ("How long does the whole process take?", "Most sellers get a written offer within 24 hours of the walkthrough. Closing can be as little as 7 days once title is clear, or on whatever date works for you."),
@@ -269,18 +294,46 @@ HIW_FAQS = [
 ]
 
 
-def hiw_timeline():
-    items = "".join(
-        f'<li><div class="tl-n">{i}</div><div class="tl-b"><div class="step">{when}</div><h3>{t}</h3><p>{d}</p></div></li>'
-        for i, (when, t, d) in enumerate(HIW_STEPS, 1))
-    return f'<section><div class="wrap" style="max-width:860px"><h2>From first call to cash at closing</h2><ol class="tl">{items}</ol></div></section>'
+def hiw_steps():
+    cards = ""
+    for i, (ic, when, t, d, pts) in enumerate(HIW_STEPS, 1):
+        li = "".join(f"<li>{p}</li>" for p in pts)
+        cards += (f'<li class="hs"><div class="hs-top"><span class="hs-n">{i}</span><span class="hs-ic">{icon(IC[ic])}</span></div>'
+                  f'<div class="step">{when}</div><h3>{t}</h3><p>{d}</p><ul class="checks dark">{li}</ul></li>')
+    return (f'<section><div class="wrap"><p class="eyebrow">The process</p><h2>Four steps from first call to cash at closing</h2>'
+            f'<p class="intro">No agents, no showings, no surprises. Here\'s exactly what happens and when.</p><ol class="hsteps">{cards}</ol>'
+            f'<p style="text-align:center;margin-top:26px"><a class="call" href="#offer">Start Step 1 Now</a></p></div></section>')
+
+
+def hiw_stats():
+    s = [("2007", "Buying houses since"), ("475+", "Transactions"), ("24 hrs", "Typical offer time"), ("7 days", "Fastest closing")]
+    cells = "".join(f'<div><b>{a}</b><span>{b}</span></div>' for a, b in s)
+    return f'<div class="stats"><div class="wrap">{cells}</div></div>'
+
+
+def hiw_offer():
+    f = [("chart", "Recent sales nearby", "What similar houses close by have actually sold for, not list prices or online estimates."),
+         ("tool", "Repairs it needs", "Roof, HVAC, kitchens, baths, foundation. We price the work so you don't have to do it."),
+         ("pin", "Location and costs", "The neighborhood, plus the costs of buying, holding and reselling the house.")]
+    cards = "".join(f'<div class="box ic"><span class="hs-ic">{icon(IC[k])}</span><h3>{t}</h3><p>{d}</p></div>' for k, t, d in f)
+    return (f'<section class="alt"><div class="wrap"><p class="eyebrow">Your offer</p><h2>How we figure your offer</h2>'
+            f'<p class="intro">No mystery numbers. We\'ll show you the sales we used and the repairs we priced, so you can check our math.</p>'
+            f'<div class="grid3">{cards}</div></div></section>')
+
+
+def hiw_james():
+    return f"""<section><div class="wrap meet"><img src="/img/james-stallworth.jpg" alt="James Stallworth, owner of Jax Cash Buyers, holding a SOLD sign" width="240" height="240" loading="lazy">
+<div><p class="eyebrow">Who you'll work with</p><h2>Local, veteran-owned, and accountable</h2>
+<p>Jax Cash Buyers is owned by James Stallworth, a Navy veteran. We've been buying houses across North Florida since 2007, from the Beaches to Middleburg and from Yulee to St. Augustine.</p>
+<p>We're not a national call center. Our office is on Touchton Road, and when we tell you a date and a number, that's what happens.</p>
+<p><a class="call" href="tel:{TEL}">Call {PHONE}</a></p></div></div></section>"""
 
 
 hiw_faq_html = "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in HIW_FAQS)
 hiw_schema = [
     {"@context": "https://schema.org", "@type": "HowTo", "name": "How to sell your house to Jax Cash Buyers",
      "totalTime": "P7D",
-     "step": [{"@type": "HowToStep", "position": i, "name": t, "text": d} for i, (_, t, d) in enumerate(HIW_STEPS, 1)]},
+     "step": [{"@type": "HowToStep", "position": i, "name": t, "text": d} for i, (_, _, t, d, _) in enumerate(HIW_STEPS, 1)]},
     {"@context": "https://schema.org", "@type": "FAQPage",
      "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in HIW_FAQS]},
 ]
@@ -289,19 +342,19 @@ page("/how-we-buy-houses/", "How We Buy Houses in Jacksonville | Cash Offer in 2
      hero("How Selling Your House to Us Works",
           "One call, one walkthrough, one written cash offer. You pick the closing date.",
           ["Written offer usually within 24 hours", "Close in as little as 7 days, or on your date", "Local, neutral title company closing", "No fees, no commissions, no repairs"])
-     + hiw_timeline()
-     + """<section class="alt"><div class="wrap"><h2>What you skip when you sell to us</h2><div class="grid3">
+     + hiw_stats() + hiw_steps() + hiw_offer() + hiw_james()
+     + """<section class="alt"><div class="wrap"><p class="eyebrow">Skip the hassle</p><h2>What you don't have to do</h2><div class="grid3">
 <div class="box"><h3>Repairs and clean-out</h3><p>No painting, fixing or hauling. We buy as-is, and you leave behind what you don't want.</p></div>
 <div class="box"><h3>Showings</h3><p>No open houses, lockboxes or strangers walking through. Just one short visit.</p></div>
 <div class="box"><h3>Commissions and fees</h3><p>No agent commission, and we pay normal closing costs.</p></div>
 <div class="box"><h3>Waiting on a bank</h3><p>We buy with cash, so there's no buyer loan, appraisal or financing to fall through.</p></div>
 <div class="box"><h3>Months of holding costs</h3><p>No more mortgage, taxes, insurance and utilities while a listed house sits.</p></div>
-<div class="box"><h3>Guesswork</h3><p>We show you how we got our number: repairs, location and recent nearby sales.</p></div>
+<div class="box"><h3>Wondering if it'll close</h3><p>No financing contingency. When we sign, we're ready to buy.</p></div>
 </div></div></section>"""
-     + f"""<section><div class="wrap"><h2>Our process vs. listing with an agent</h2>{compare_table()}
+     + f"""<section><div class="wrap"><p class="eyebrow">Compare</p><h2>Our process vs. listing with an agent</h2>{compare_table()}
 <p style="color:var(--mute);font-size:14px;margin-top:10px">Agent figures are typical ranges and vary by sale. <a href="/compare/">See the full comparison &rarr;</a></p></div></section>"""
-     + testimonials(2)
-     + f'<section class="alt"><div class="wrap" style="max-width:860px"><h2>Questions about the process</h2>{hiw_faq_html}<p style="margin-top:14px"><a href="/faq/">More answers &rarr;</a></p></div></section>'
+     + testimonials(4)
+     + f'<section class="alt"><div class="wrap" style="max-width:860px"><p class="eyebrow">Questions</p><h2>Questions about the process</h2>{hiw_faq_html}<p style="margin-top:14px"><a href="/faq/">More answers &rarr;</a></p></div></section>'
      + cta(), schema=hiw_schema)
 
 # ---------- COMPARE ----------
