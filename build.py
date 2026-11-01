@@ -24,7 +24,7 @@ BUSINESS_SCHEMA = {
     "address": {"@type": "PostalAddress", "streetAddress": ADDR["street"], "addressLocality": ADDR["city"],
                 "addressRegion": "FL", "postalCode": ADDR["zip"], "addressCountry": "US"},
     "areaServed": [{"@type": "City", "name": a + ", FL"} for a in AREAS],
-    "foundingDate": "2007",
+    "foundingDate": "2016",
     "sameAs": ["https://www.facebook.com/JaxCashBuyers/", "https://www.instagram.com/jaxcashbuyers/",
                "https://www.linkedin.com/company/american-equity-group-llc/", "https://www.twitter.com/JaxCashBuyers/"],
 }
@@ -65,6 +65,7 @@ footer{background:#0b1f35;color:#b9c6d4;padding:36px 0;font-size:15px}footer a{c
 .hs-ic{display:inline-flex;width:52px;height:52px;border-radius:12px;background:#e8f5ed;color:var(--green-d);align-items:center;justify-content:center}
 .checks.dark{margin:0;font-size:15px}.checks.dark li{margin:4px 0}.checks.dark li:before{color:var(--green)}
 .box.ic .hs-ic{margin-bottom:10px}
+.hs-pic{display:block;width:calc(100% + 44px);margin:-22px -22px 16px;aspect-ratio:3/2;object-fit:cover;border-radius:14px 14px 0 0}
 .meet{display:grid;grid-template-columns:240px 1fr;gap:36px;align-items:center}.meet img{width:240px;height:240px;object-fit:cover;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
 @media(max-width:1000px){.hsteps{grid-template-columns:1fr 1fr}}
 @media(max-width:860px){.hsteps,.meet{grid-template-columns:1fr}.stats .wrap{grid-template-columns:1fr 1fr}.meet img{width:180px;height:180px}}
@@ -188,7 +189,7 @@ def shell(slug, title, desc, body, extra_schema=None, robots="index,follow"):
 <a class="call" href="tel:{TEL}">{PHONE}</a></div></header>
 {body}
 <footer><div class="wrap cols"><div><b style="color:#fff">Jax Cash Buyers</b><br>{ADDR['street']}<br>{ADDR['city']}, FL {ADDR['zip']}<br>
-<a href="tel:{TEL}">{PHONE}</a> · <a href="mailto:{EMAIL}">{EMAIL}</a><p>Local, veteran-owned home buyers helping North Florida homeowners since 2007.</p></div>
+<a href="tel:{TEL}">{PHONE}</a> · <a href="mailto:{EMAIL}">{EMAIL}</a><p>Local, veteran-owned home buyers helping North Florida homeowners since 2016.</p></div>
 <div><b style="color:#fff">Sell your house</b><br><a href="/get-a-cash-offer-today/">Get a cash offer</a><br><a href="/how-we-buy-houses/">How it works</a><br><a href="/avoiding-foreclosure/">Foreclosure</a><br><a href="/selling-inherited-home/">Inherited house</a><br><a href="/selling-house-during-probate/">Probate</a><br><a href="/selling-home-during-divorce/">Divorce</a></div>
 <div><b style="color:#fff">Company</b><br><a href="/our-company/">About</a><br><a href="/testimonials/">Reviews</a><br><a href="/faq/">FAQ</a><br><a href="/blog/">Blog</a><br><a href="/contact-us/">Contact</a><br><a href="/privacy-policy/">Privacy</a> · <a href="/terms-and-conditions/">Terms</a></div></div>
 <div class="wrap" style="margin-top:18px;font-size:13px">© 2026 Jax Cash Buyers. We are home buyers, not real estate agents.</div></footer>
@@ -210,10 +211,10 @@ page("/", "Sell My House Fast Jacksonville FL | Cash Offer in 24 Hrs",
      "Sell your Jacksonville house fast for cash. Fair offer in 24 hours, no repairs, no commissions, close in as little as 7 days. Call (904) 750-3565.",
      hero("Sell Your House Fast in Jacksonville for Cash",
           "Get a fair, as-is cash offer in 24 hours. Skip the agents, repairs and months of waiting.",
-          ["No repairs or cleaning", "No commissions or fees. We pay closing costs", "Close in as little as 7 days, or on your date", "Local and veteran-owned since 2007"])
+          ["No repairs or cleaning", "No commissions or fees. We pay closing costs", "Close in as little as 7 days, or on your date", "Local and veteran-owned since 2016"])
      + steps()
      + """<section><div class="wrap grid2"><div><h2>Local Jacksonville home buyers you can trust</h2>
-<p>Jax Cash Buyers is a local real estate company owned by James Stallworth, a Navy veteran. Since 2007 we've bought houses all over North Florida, from the Beaches to Middleburg and from Yulee to St. Augustine, and we've been part of more than 475 transactions.</p>
+<p>Jax Cash Buyers is a local real estate company owned by James Stallworth, a Navy veteran. Since 2016 we've bought houses all over North Florida, from the Beaches to Middleburg and from Yulee to St. Augustine, and we've been part of more than 475 transactions.</p>
 <p>We're not agents and we don't list your house. We buy it ourselves, with our own cash, as-is. That means no showings, no repair requests, no waiting on a buyer's loan and no commission coming out of your check.</p>
 <p>Behind on payments, inherited a house, dealing with tenants, divorce, code violations or a house that needs more work than it's worth? We've seen it all, and we can usually make an offer on any house in any condition.</p></div>
 <div><h2>What you get</h2><ul class="checks" style="color:var(--ink)"><li>A written cash offer, usually within 24 hours</li><li>No obligation. Take it or leave it</li><li>A closing date you choose</li><li>A local, neutral title company handles closing</li><li>Take what you want and leave the rest behind</li></ul>
@@ -298,7 +299,12 @@ def hiw_steps():
     cards = ""
     for i, (ic, when, t, d, pts) in enumerate(HIW_STEPS, 1):
         li = "".join(f"<li>{p}</li>" for p in pts)
-        cards += (f'<li class="hs"><div class="hs-top"><span class="hs-n">{i}</span><span class="hs-ic">{icon(IC[ic])}</span></div>'
+        pic = ""
+        for ext in ("webp", "jpg", "png"):
+            if os.path.exists(os.path.join(os.path.dirname(__file__) or ".", "img", f"hiw-step{i}.{ext}")):
+                pic = f'<img class="hs-pic" src="/img/hiw-step{i}.{ext}" alt="Step {i}: {esc(t)}" width="600" height="400" loading="lazy">'
+                break
+        cards += (f'<li class="hs">{pic}<div class="hs-top"><span class="hs-n">{i}</span><span class="hs-ic">{icon(IC[ic])}</span></div>'
                   f'<div class="step">{when}</div><h3>{t}</h3><p>{d}</p><ul class="checks dark">{li}</ul></li>')
     return (f'<section><div class="wrap"><p class="eyebrow">The process</p><h2>Four steps from first call to cash at closing</h2>'
             f'<p class="intro">No agents, no showings, no surprises. Here\'s exactly what happens and when.</p><ol class="hsteps">{cards}</ol>'
@@ -306,7 +312,7 @@ def hiw_steps():
 
 
 def hiw_stats():
-    s = [("2007", "Buying houses since"), ("475+", "Transactions"), ("24 hrs", "Typical offer time"), ("7 days", "Fastest closing")]
+    s = [("2016", "Buying houses since"), ("475+", "Transactions"), ("24 hrs", "Typical offer time"), ("7 days", "Fastest closing")]
     cells = "".join(f'<div><b>{a}</b><span>{b}</span></div>' for a, b in s)
     return f'<div class="stats"><div class="wrap">{cells}</div></div>'
 
@@ -324,7 +330,7 @@ def hiw_offer():
 def hiw_james():
     return f"""<section><div class="wrap meet"><img src="/img/james-stallworth.jpg" alt="James Stallworth, owner of Jax Cash Buyers, holding a SOLD sign" width="240" height="240" loading="lazy">
 <div><p class="eyebrow">Who you'll work with</p><h2>Local, veteran-owned, and accountable</h2>
-<p>Jax Cash Buyers is owned by James Stallworth, a Navy veteran. We've been buying houses across North Florida since 2007, from the Beaches to Middleburg and from Yulee to St. Augustine.</p>
+<p>Jax Cash Buyers is owned by James Stallworth, a Navy veteran. We've been buying houses across North Florida since 2016, from the Beaches to Middleburg and from Yulee to St. Augustine.</p>
 <p>We're not a national call center. Our office is on Touchton Road, and when we tell you a date and a number, that's what happens.</p>
 <p><a class="call" href="tel:{TEL}">Call {PHONE}</a></p></div></div></section>"""
 
@@ -400,8 +406,8 @@ page("/testimonials/", "Reviews | What Sellers Say About Jax Cash Buyers",
 
 # ---------- ABOUT ----------
 page("/our-company/", "About Jax Cash Buyers | Local, Veteran-Owned Home Buyers",
-     "Jax Cash Buyers is a local, veteran-owned Jacksonville home buying company. Since 2007 we've helped homeowners sell fast for a fair price.",
-     hero("About Jax Cash Buyers", "Local, veteran-owned home buyers helping North Florida homeowners since 2007.",
+     "Jax Cash Buyers is a local, veteran-owned Jacksonville home buying company. Since 2016 we've helped homeowners sell fast for a fair price.",
+     hero("About Jax Cash Buyers", "Local, veteran-owned home buyers helping North Florida homeowners since 2016.",
           ["Owned by James Stallworth, Navy veteran", "475+ transactions", "Based in Jacksonville"], form=False)
      + """<section><div class="wrap grid2"><div><h2>Who we are</h2><p>Jax Cash Buyers buys houses directly from homeowners who need a fast, simple sale. That could be because of foreclosure, an inherited or probate property, a divorce, tired-landlord problems, or a house that needs more work than it's worth.</p>
 <p>When we commit to buying your house, the whole team is accountable for doing what we said. Whether that means working with a lender, the city on code violations, or the title company, we push until the job is done and you have your money.</p></div>
