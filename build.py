@@ -57,6 +57,10 @@ table.cmp th{background:var(--navy);color:#fff}table.cmp td:last-child{font-weig
 details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}summary{font-weight:700;cursor:pointer}
 footer{background:#0b1f35;color:#b9c6d4;padding:36px 0;font-size:15px}footer a{color:#dbe6f2}footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px}
 .formslot{min-height:420px}.legal{max-width:820px}
+.tl{list-style:none;padding:0;margin:24px 0 0;position:relative}.tl:before{content:"";position:absolute;left:21px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl li{display:flex;gap:18px;margin:0 0 26px;position:relative}.tl li:last-child{margin-bottom:0}
+.tl-n{flex:0 0 44px;height:44px;border-radius:50%;background:var(--green);color:#fff;font-weight:800;font-size:19px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px #fff}
+.tl-b h3{margin:2px 0 6px}.tl-b p{margin:0}
 .stickycall{display:none}
 @media(max-width:860px){.hero .wrap,.grid3,.grid2,footer .cols{grid-template-columns:1fr}.hero h1{font-size:31px}h2{font-size:25px}.nav{display:none}
  .stickycall{display:block;position:fixed;left:0;right:0;bottom:0;background:var(--green);color:#fff;text-align:center;font-weight:800;padding:14px;text-decoration:none;z-index:50}body{padding-bottom:52px}}
@@ -246,18 +250,59 @@ page("/we-buy-houses-jacksonville-florida/", "We Buy Houses Jacksonville Florida
      + steps() + areas_block() + cta())
 
 # ---------- HOW IT WORKS ----------
-page("/how-we-buy-houses/", "How We Buy Houses in Jacksonville | Simple 3-Step Process",
+HIW_STEPS = [
+    ("Today", "Tell us about the house",
+     f"Fill out the short form or call {PHONE}. We'll ask about the address, condition, your timeline and any mortgage or liens. It takes about two minutes, and everything stays confidential."),
+    ("Within 24 hours", "One walkthrough, then a written offer",
+     "We set up one short visit at a time that works for you. No cleaning or staging. We look at the repairs, the location and recent sales of similar homes nearby, then give you a written all-cash offer and walk you through how we got the number."),
+    ("You decide", "Take it or leave it",
+     "No pressure and no obligation. Ask questions, compare it to listing, talk it over with family. If it doesn't work for you, no hard feelings."),
+    ("As soon as 7 days", "Close on your date and get paid",
+     "If you accept, a local, neutral title company opens title and handles payoffs, liens and paperwork. You sign and get paid at closing, as soon as 7 days or weeks or months out if you need time to move."),
+]
+HIW_FAQS = [
+    ("How long does the whole process take?", "Most sellers get a written offer within 24 hours of the walkthrough. Closing can be as little as 7 days once title is clear, or on whatever date works for you."),
+    ("Do I have to clean or fix anything first?", "No. We buy as-is. Take what you want and leave the rest behind."),
+    ("Who handles the paperwork and payoffs?", "A local, neutral title company. They pay off your mortgage and any liens at closing and send you the rest."),
+    ("What if I still owe on the house or I'm behind on payments?", "That's common. The mortgage and any liens are paid off at closing from the sale. Call us and we'll talk through your numbers."),
+    ("Am I locked in once I ask for an offer?", "No. The offer is free and there's no obligation until you sign a purchase agreement."),
+]
+
+
+def hiw_timeline():
+    items = "".join(
+        f'<li><div class="tl-n">{i}</div><div class="tl-b"><div class="step">{when}</div><h3>{t}</h3><p>{d}</p></div></li>'
+        for i, (when, t, d) in enumerate(HIW_STEPS, 1))
+    return f'<section><div class="wrap" style="max-width:860px"><h2>From first call to cash at closing</h2><ol class="tl">{items}</ol></div></section>'
+
+
+hiw_faq_html = "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in HIW_FAQS)
+hiw_schema = [
+    {"@context": "https://schema.org", "@type": "HowTo", "name": "How to sell your house to Jax Cash Buyers",
+     "totalTime": "P7D",
+     "step": [{"@type": "HowToStep", "position": i, "name": t, "text": d} for i, (_, t, d) in enumerate(HIW_STEPS, 1)]},
+    {"@context": "https://schema.org", "@type": "FAQPage",
+     "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in HIW_FAQS]},
+]
+page("/how-we-buy-houses/", "How We Buy Houses in Jacksonville | Cash Offer in 24 Hours",
      "See how Jax Cash Buyers buys houses in Jacksonville: tell us about the house, get a cash offer in 24 hours, and close on your date. No fees.",
-     hero("How Our Home Buying Process Works",
-          "Three simple steps from first call to cash at closing, on your schedule.",
-          ["Offer usually within 24 hours", "Close in as little as 7 days", "Local title company closing", "No fees or commissions"], form=False)
-     + steps()
-     + """<section class="alt"><div class="wrap"><h2>The details</h2>
-<h3>1. Tell us about your house</h3><p>Fill out our short form or call (904) 750-3565. We'll ask about the address, condition, your timeline and any mortgage or liens. Everything stays confidential.</p>
-<h3>2. One walkthrough, then a written offer</h3><p>We schedule a short visit at a time that works for you. We look at repairs, the location and recent sales of similar homes nearby, and then give you a fair all-cash offer, usually within 24 hours. There's no pressure and no obligation.</p>
-<h3>3. You pick the closing date</h3><p>If you accept, we open title with a local, neutral title company. They handle payoffs, liens and paperwork. You show up, sign, and get paid. That can be as soon as 7 days, or weeks or months out if you need time to move.</p>
-<h3>What you don't have to do</h3><ul><li>No repairs, painting or cleaning</li><li>No showings or open houses</li><li>No commissions or closing costs</li><li>No waiting on a buyer's bank</li></ul></div></section>"""
-     + testimonials(2) + cta())
+     hero("How Selling Your House to Us Works",
+          "One call, one walkthrough, one written cash offer. You pick the closing date.",
+          ["Written offer usually within 24 hours", "Close in as little as 7 days, or on your date", "Local, neutral title company closing", "No fees, no commissions, no repairs"])
+     + hiw_timeline()
+     + """<section class="alt"><div class="wrap"><h2>What you skip when you sell to us</h2><div class="grid3">
+<div class="box"><h3>Repairs and clean-out</h3><p>No painting, fixing or hauling. We buy as-is, and you leave behind what you don't want.</p></div>
+<div class="box"><h3>Showings</h3><p>No open houses, lockboxes or strangers walking through. Just one short visit.</p></div>
+<div class="box"><h3>Commissions and fees</h3><p>No agent commission, and we pay normal closing costs.</p></div>
+<div class="box"><h3>Waiting on a bank</h3><p>We buy with cash, so there's no buyer loan, appraisal or financing to fall through.</p></div>
+<div class="box"><h3>Months of holding costs</h3><p>No more mortgage, taxes, insurance and utilities while a listed house sits.</p></div>
+<div class="box"><h3>Guesswork</h3><p>We show you how we got our number: repairs, location and recent nearby sales.</p></div>
+</div></div></section>"""
+     + f"""<section><div class="wrap"><h2>Our process vs. listing with an agent</h2>{compare_table()}
+<p style="color:var(--mute);font-size:14px;margin-top:10px">Agent figures are typical ranges and vary by sale. <a href="/compare/">See the full comparison &rarr;</a></p></div></section>"""
+     + testimonials(2)
+     + f'<section class="alt"><div class="wrap" style="max-width:860px"><h2>Questions about the process</h2>{hiw_faq_html}<p style="margin-top:14px"><a href="/faq/">More answers &rarr;</a></p></div></section>'
+     + cta(), schema=hiw_schema)
 
 # ---------- COMPARE ----------
 page("/compare/", "Sell to an Investor vs. List With an Agent | Jacksonville FL",
