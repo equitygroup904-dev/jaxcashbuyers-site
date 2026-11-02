@@ -18,7 +18,7 @@ AREAS = ["Jacksonville", "Jacksonville Beach", "Atlantic Beach", "Neptune Beach"
 
 BUSINESS_SCHEMA = {
     "@context": "https://schema.org", "@type": "LocalBusiness", "@id": SITE + "/#business",
-    "name": "Jax Cash Buyers", "url": SITE + "/", "telephone": TEL, "email": EMAIL,
+    "name": "Jax Cash Buyers", "url": SITE + "/", "telephone": TEL,
     "image": SITE + "/img/og-jax-cash-buyers.jpg",
     "priceRange": "$$",
     "address": {"@type": "PostalAddress", "streetAddress": ADDR["street"], "addressLocality": ADDR["city"],
@@ -188,7 +188,7 @@ def shell(slug, title, desc, body, extra_schema=None, robots="index,follow"):
 <a class="call" href="tel:{TEL}">{PHONE}</a></div></header>
 {body}
 <footer><div class="wrap cols"><div><b style="color:#fff">Jax Cash Buyers</b><br>{ADDR['street']}<br>{ADDR['city']}, FL {ADDR['zip']}<br>
-<a href="tel:{TEL}">{PHONE}</a> · <a href="mailto:{EMAIL}">{EMAIL}</a><p>Local, veteran-owned home buyers helping North Florida homeowners since 2016.</p></div>
+<a href="tel:{TEL}">{PHONE}</a><p>Local, veteran-owned home buyers helping North Florida homeowners since 2016.</p></div>
 <div><b style="color:#fff">Sell your house</b><br><a href="/get-a-cash-offer-today/">Get a cash offer</a><br><a href="/how-we-buy-houses/">How it works</a><br><a href="/avoiding-foreclosure/">Foreclosure</a><br><a href="/selling-inherited-home/">Inherited house</a><br><a href="/selling-house-during-probate/">Probate</a><br><a href="/selling-home-during-divorce/">Divorce</a></div>
 <div><b style="color:#fff">Company</b><br><a href="/our-company/">About</a><br><a href="/testimonials/">Reviews</a><br><a href="/faq/">FAQ</a><br><a href="/blog/">Blog</a><br><a href="/contact-us/">Contact</a><br><a href="/privacy-policy/">Privacy</a> · <a href="/terms-and-conditions/">Terms</a></div></div>
 <div class="wrap" style="margin-top:18px;font-size:13px">© 2026 Jax Cash Buyers. We are home buyers, not real estate agents.</div></footer>
@@ -417,9 +417,9 @@ page("/our-company/", "About Jax Cash Buyers | Local, Veteran-Owned Home Buyers"
 page("/contact-us/", "Contact Jax Cash Buyers | (904) 750-3565",
      "Contact Jax Cash Buyers in Jacksonville. Call (904) 750-3565 or send us a message about selling your house fast for cash.",
      hero("Let's Talk", "Questions about our process, foreclosure, an inherited house, or anything else? Call or send us a message.",
-          [f"Call or text {PHONE}", f"Email {EMAIL}", "We reply quickly. Calls are fastest"])
+          [f"Call or text {PHONE}", "We reply quickly. Calls are fastest"])
      + f"""<section><div class="wrap grid2"><div><h2>Contact info</h2><p><b>Jax Cash Buyers</b><br>{ADDR['street']}<br>{ADDR['city']}, FL {ADDR['zip']}</p>
-<p>Phone: <a href="tel:{TEL}">{PHONE}</a><br>Email: <a href="mailto:{EMAIL}">{EMAIL}</a></p></div>
+<p>Phone: <a href="tel:{TEL}">{PHONE}</a></p></div>
 <div><h2>Good to know</h2><div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-bottom:12px"><img src="/img/james-stallworth.jpg" alt="James Stallworth, owner of Jax Cash Buyers, holding a SOLD sign" width="200" height="200" loading="lazy" style="width:200px;height:200px;object-fit:cover;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.15)">
 <p style="margin:0"><b>James Stallworth</b><br>Owner, Jax Cash Buyers<br>Local and veteran-owned</p></div>
 <p>We'll never pressure you. Ask us anything, even just to make sure we're real people.</p></div></div></section>""")
@@ -518,7 +518,7 @@ page("/privacy-policy/", "Privacy Policy | Jax Cash Buyers",
 <h3>How we use it</h3><p>To respond to you, evaluate your property, make an offer, and send updates you've agreed to receive. We do not sell your personal information.</p>
 <h3>Text messages</h3><p>If you agree to receive texts, message frequency varies and message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of any purchase. Mobile numbers and SMS consent are not shared with third parties or affiliates for marketing purposes.</p>
 <h3>Sharing</h3><p>We share information only with service providers who help us operate (for example our CRM, title companies and closing agents) or when required by law.</p>
-<h3>Your choices</h3><p>You can ask us to update or delete your information or stop contacting you at any time: {EMAIL} or {PHONE}.</p>
+<h3>Your choices</h3><p>You can ask us to update or delete your information or stop contacting you at any time by calling {PHONE}.</p>
 <h3>Contact</h3><p>{ADDR['street']}, {ADDR['city']}, FL {ADDR['zip']}</p></div></section>""")
 
 page("/terms-and-conditions/", "Terms and Conditions | Jax Cash Buyers",
@@ -529,7 +529,7 @@ page("/terms-and-conditions/", "Terms and Conditions | Jax Cash Buyers",
 <h3>We are buyers, not agents</h3><p>Jax Cash Buyers buys property directly and does not act as your real estate agent or broker.</p>
 <h3>Communications</h3><p>By submitting your information you agree that we may contact you by phone, text and email about your property. Message and data rates may apply. Reply STOP to opt out of texts. Consent is not a condition of purchase.</p>
 <h3>Limitation of liability</h3><p>This site is provided "as is." We are not liable for damages arising from its use.</p>
-<h3>Contact</h3><p>{EMAIL} · {PHONE}</p></div></section>""")
+<h3>Contact</h3><p>{PHONE}</p></div></section>""")
 
 # ---------- RESOURCES ----------
 page("/resource-page/", "Home Seller Resources | Jacksonville Foreclosure & Selling Help",
