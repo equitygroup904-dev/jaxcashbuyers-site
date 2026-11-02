@@ -65,6 +65,9 @@ footer{background:#0b1f35;color:#b9c6d4;padding:36px 0;font-size:15px}footer a{c
 .hs-ic{display:inline-flex;width:52px;height:52px;border-radius:12px;background:#e8f5ed;color:var(--green-d);align-items:center;justify-content:center}
 .checks.dark{margin:0;font-size:15px}.checks.dark li{margin:4px 0}.checks.dark li:before{color:var(--green)}
 .box.ic .hs-ic{margin-bottom:10px}
+.cw{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;grid-auto-flow:dense}.cw-t:nth-child(1),.cw-t:nth-child(12){grid-column:span 2;grid-row:span 2}.cw-t{display:block;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.08)}.cw-t img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;transition:transform .25s}.cw-t:hover img{transform:scale(1.05)}
+.lb{display:none;position:fixed;inset:0;background:rgba(5,15,28,.88);z-index:100;align-items:center;justify-content:center;padding:16px;cursor:zoom-out}.lb:target{display:flex}.lb img{max-width:min(92vw,700px);max-height:88vh;border-radius:12px}
+@media(max-width:860px){.cw{grid-template-columns:repeat(2,1fr);gap:6px}}
 .hs-pic{display:block;width:calc(100% + 44px);margin:-22px -22px 16px;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:14px 14px 0 0}
 .meet{display:grid;grid-template-columns:240px 1fr;gap:36px;align-items:center}.meet img{width:240px;height:240px;object-fit:cover;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
 @media(max-width:860px){.hsteps,.meet{grid-template-columns:1fr}.stats .wrap{grid-template-columns:1fr 1fr}.meet img{width:180px;height:180px}}
@@ -404,14 +407,43 @@ page("/testimonials/", "Reviews | What Sellers Say About Jax Cash Buyers",
      + '<section class="alt"><div class="wrap"><p>Sold to us? <a href="/contact-us/">Tell us about your experience.</a></p></div></section>' + cta())
 
 # ---------- ABOUT ----------
+CLOSINGS = sorted(f for f in os.listdir(os.path.join(os.path.dirname(__file__) or ".", "img", "closings")) if f.endswith(".webp"))
+
+
+def closings_wall():
+    tiles = "".join(
+        f'<a class="cw-t" href="#c{i}"><img src="/img/closings/{f}" alt="Jax Cash Buyers closing with a happy seller" width="700" height="700" loading="lazy"></a>'
+        for i, f in enumerate(CLOSINGS, 1))
+    boxes = "".join(
+        f'<a class="lb" id="c{i}" href="#wall" aria-label="Close photo"><img src="/img/closings/{f}" alt="Jax Cash Buyers closing" loading="lazy"></a>'
+        for i, f in enumerate(CLOSINGS, 1))
+    return (f'<section class="alt" id="wall"><div class="wrap"><p class="eyebrow">Real closings</p><h2>Our wall of closings</h2>'
+            f'<p class="intro">Real North Florida homeowners on closing day, at local title companies. No stock photos. These are the people we\'ve worked with.</p>'
+            f'<div class="cw">{tiles}</div></div>{boxes}</section>')
+
+
+ABOUT_VALUES = [("house", "We care", "We always do the right thing, even when it costs us."),
+                ("phone", "Honest, open communication", "You'll always know where things stand and what comes next."),
+                ("doc", "Accountability", "When we tell you a date and a number, that's what happens."),
+                ("key", "A great experience", "From the first call to the keys, we make it simple."),
+                ("pin", "Our community", "We restore houses and help revitalize North Florida neighborhoods."),
+                ("chart", "Veteran-owned", "Navy discipline, local roots. Go Navy!")]
+
 page("/our-company/", "About Jax Cash Buyers | Local, Veteran-Owned Home Buyers",
      "Jax Cash Buyers is a local, veteran-owned Jacksonville home buying company. Since 2016 we've helped homeowners sell fast for a fair price.",
      hero("About Jax Cash Buyers", "Local, veteran-owned home buyers helping North Florida homeowners since 2016.",
           ["Owned by James Stallworth, Navy veteran", "475+ transactions", "Based in Jacksonville"], form=False)
-     + """<section><div class="wrap grid2"><div><h2>Who we are</h2><p>Jax Cash Buyers buys houses directly from homeowners who need a fast, simple sale. That could be because of foreclosure, an inherited or probate property, a divorce, tired-landlord problems, or a house that needs more work than it's worth.</p>
-<p>When we commit to buying your house, the whole team is accountable for doing what we said. Whether that means working with a lender, the city on code violations, or the title company, we push until the job is done and you have your money.</p></div>
-<div><h2>What we stand for</h2><ul class="checks" style="color:var(--ink)"><li>We care, and we always do the right thing</li><li>Honest, open communication</li><li>A great experience from first call to closing</li><li>Accountability for every promise</li><li>Restoring and revitalizing our community</li><li>Local and veteran-owned. Go Navy!</li></ul></div></div></section>"""
-     + testimonials(2) + cta())
+     + hiw_stats()
+     + f"""<section><div class="wrap meet"><img src="/img/james-stallworth.jpg" alt="James Stallworth, owner of Jax Cash Buyers, holding a SOLD sign" width="240" height="240">
+<div><p class="eyebrow">Who we are</p><h2>Meet James Stallworth</h2>
+<p>Jax Cash Buyers buys houses directly from homeowners who need a fast, simple sale. That could be because of foreclosure, an inherited or probate property, a divorce, tired-landlord problems, or a house that needs more work than it's worth.</p>
+<p>When we commit to buying your house, the whole team is accountable for doing what we said. Whether that means working with a lender, the city on code violations, or the title company, we push until the job is done and you have your money.</p>
+<p><a class="call" href="tel:{TEL}">Call James's team: {PHONE}</a></p></div></div></section>"""
+     + closings_wall()
+     + '<section><div class="wrap"><p class="eyebrow">Our values</p><h2>What we stand for</h2><div class="grid3">'
+     + "".join(f'<div class="box ic"><span class="hs-ic">{icon(IC[k])}</span><h3>{t}</h3><p>{d}</p></div>' for k, t, d in ABOUT_VALUES)
+     + "</div></div></section>"
+     + testimonials(4) + cta())
 
 # ---------- CONTACT ----------
 page("/contact-us/", "Contact Jax Cash Buyers | (904) 750-3565",
