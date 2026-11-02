@@ -59,15 +59,14 @@ footer{background:#0b1f35;color:#b9c6d4;padding:36px 0;font-size:15px}footer a{c
 .formslot{min-height:420px}.legal{max-width:820px}
 .eyebrow{color:var(--green);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 6px}.intro{color:var(--mute);font-size:18px;max-width:680px;margin:0 0 28px}
 .stats{background:var(--navy);color:#fff;padding:22px 0}.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center}.stats b{display:block;font-size:30px;line-height:1.1;color:#7fd6a1}.stats span{font-size:14px;color:#dbe6f2}
-.hsteps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.hsteps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:22px;counter-reset:s}
 .hs{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;position:relative;box-shadow:0 4px 16px rgba(15,42,71,.06)}.hs h3{margin:4px 0 8px}.hs p{margin:0 0 12px;color:var(--mute)}
 .hs-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.hs-n{font-size:44px;font-weight:800;line-height:1;color:var(--line)}
 .hs-ic{display:inline-flex;width:52px;height:52px;border-radius:12px;background:#e8f5ed;color:var(--green-d);align-items:center;justify-content:center}
 .checks.dark{margin:0;font-size:15px}.checks.dark li{margin:4px 0}.checks.dark li:before{color:var(--green)}
 .box.ic .hs-ic{margin-bottom:10px}
-.hs-pic{display:block;width:calc(100% + 44px);margin:-22px -22px 16px;aspect-ratio:3/2;object-fit:cover;border-radius:14px 14px 0 0}
+.hs-pic{display:block;width:calc(100% + 44px);margin:-22px -22px 16px;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:14px 14px 0 0}
 .meet{display:grid;grid-template-columns:240px 1fr;gap:36px;align-items:center}.meet img{width:240px;height:240px;object-fit:cover;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
-@media(max-width:1000px){.hsteps{grid-template-columns:1fr 1fr}}
 @media(max-width:860px){.hsteps,.meet{grid-template-columns:1fr}.stats .wrap{grid-template-columns:1fr 1fr}.meet img{width:180px;height:180px}}
 .stickycall{display:none}
 @media(max-width:860px){.hero .wrap,.grid3,.grid2,footer .cols{grid-template-columns:1fr}.hero h1{font-size:31px}h2{font-size:25px}.nav{display:none}
