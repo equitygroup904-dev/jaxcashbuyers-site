@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Make a 1200x630 blog / social cover image.
 
-Usage: python3 tools/make_cover.py <topic> "<post title>" <out.jpg>
+Usage: python3 tools/make_cover.py <topic> "<post title>" <out.jpg> [--no-phone]
+
+--no-phone leaves the phone number off (REQUIRED for Google Business posts: Google rejects
+posts that show a phone number; its "Call now" button carries the phone instead).
 
 topic = one of the files in img/blog-bg/ without .jpg:
 probate, foreclosure, subject-to, divorce, bankruptcy, eviction,
@@ -22,6 +25,9 @@ W, H = 1200, 630
 NAVY = (15, 42, 71)
 GREEN = (34, 139, 76)
 PHONE = "(904) 750-3565"
+NO_PHONE = "--no-phone" in sys.argv
+if NO_PHONE:
+    sys.argv.remove("--no-phone")
 LABELS = {
     "probate": "PROBATE", "foreclosure": "FORECLOSURE", "subject-to": "SUBJECT-TO",
     "divorce": "DIVORCE", "bankruptcy": "BANKRUPTCY", "eviction": "EVICTIONS",
@@ -77,7 +83,8 @@ def main(topic, title, out):
 
     # footer
     f_ft = font("Inter-SemiBold.otf", 30)
-    d.text((60, H - 84), f"Jax Cash Buyers  ·  {PHONE}", font=f_ft, fill=(220, 235, 245))
+    footer = "Jax Cash Buyers" if NO_PHONE else f"Jax Cash Buyers  ·  {PHONE}"
+    d.text((60, H - 84), footer, font=f_ft, fill=(220, 235, 245))
 
     # James in a circle, bottom right
     face = Image.open(os.path.join(ROOT, "img", "james-stallworth.jpg")).convert("RGB")

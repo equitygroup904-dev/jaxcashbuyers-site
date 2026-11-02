@@ -50,12 +50,12 @@ Rotate through these in order. Look at the newest file in `content/posts/` (its 
 ## Cover image (every post)
 `python3 tools/make_cover.py <topic> "<title>" img/blog/<url-slug>.jpg`
 It makes a 1200x630 card: a photo for the topic (img/blog-bg/), the title, a green topic label, James's photo in a
-circle and the phone number. Open the image and check the title is fully visible and readable before publishing.
+circle and the phone number (add `--no-phone` for the Google copy). Open the image and check the title is fully visible and readable before publishing.
 Never use photos of sellers or anyone other than James, and never AI-generate images of real people.
 
 ## Monthly Google offer (separate task)
 On the first Monday of each month a separate task posts a Google Business "Offer" (free cash offer in 24 hours) with its
-own cover `img/blog/offer-YYYY-MM.jpg` made by `python3 tools/make_cover.py general "Free Cash Offer in 24 Hours — No Repairs, No Fees" img/blog/offer-YYYY-MM.jpg`.
+own cover `img/blog/offer-YYYY-MM.jpg` made by `python3 tools/make_cover.py general "Free Cash Offer in 24 Hours — No Repairs, No Fees" img/blog/offer-YYYY-MM.jpg --no-phone`. No phone number in its text either.
 
 ## Guardrails (never break)
 - No made-up statistics, prices, dates, laws or case numbers. If a fact needs a source, leave it out or say "check with your attorney/county".
@@ -73,10 +73,15 @@ own cover `img/blog/offer-YYYY-MM.jpg` made by `python3 tools/make_cover.py gene
    - One `create-post` per platform (so each keeps its own caption): type "post", status "scheduled",
      scheduleDate = now + 15 minutes (UTC ISO), media [{url: "https://www.jaxcashbuyers.com/img/blog/<slug>.jpg", type: "image/jpeg"}],
      userId = James Stallworth's GHL user id (look it up with the users operations; if it can't be found, try without it).
-   - Google caption: 2–3 sentences (under 1,400 characters) summarizing the post, ending with "Read more:" + the post URL
-     and "Call (904) 750-3565". gmbPostDetails {gmbEventType "STANDARD", actionType "learn_more", url: <post URL>} on
-     TUESDAY posts; on FRIDAY posts use actionType "call" (Google shows a "Call now" button with the business phone; no url needed)
-     and end the caption with the post URL instead.
+   - GOOGLE: NEVER put a phone number in the Google caption or on the Google image. Google rejects Business
+     Profile posts that contain a phone number (a post was rejected for this on 10/30/2026); the "Call now"
+     button carries the phone. Make a Google-only cover with
+     `python3 tools/make_cover.py <topic> "<title>" img/blog/<url-slug>-gmb.jpg --no-phone`, commit it with the post,
+     and use https://www.jaxcashbuyers.com/img/blog/<url-slug>-gmb.jpg as the Google media.
+   - Google caption: 2–3 sentences (under 1,400 characters) summarizing the post, ending with "Read the full guide on
+     our website." No phone number, no "call/text us at", no URL in the text. gmbPostDetails {gmbEventType "STANDARD",
+     actionType "learn_more", url: <post URL>} on TUESDAY posts; on FRIDAY posts use actionType "call" (Google shows a
+     "Call now" button with the business phone; no url needed).
    - Facebook caption: 3–5 short sentences, a question to the reader, the post URL, "Call or text (904) 750-3565",
      and 3–5 local hashtags (e.g. #Jacksonville #JaxRealEstate #SellMyHouseFast). facebookPostDetails {type "post"}.
    - idempotencyKey "blog-<slug>-gmb" / "blog-<slug>-fb".
