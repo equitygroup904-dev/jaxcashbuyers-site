@@ -65,7 +65,7 @@ footer{background:#0b1f35;color:#b9c6d4;padding:36px 0;font-size:15px}footer a{c
 .hs-ic{display:inline-flex;width:52px;height:52px;border-radius:12px;background:#e8f5ed;color:var(--green-d);align-items:center;justify-content:center}
 .checks.dark{margin:0;font-size:15px}.checks.dark li{margin:4px 0}.checks.dark li:before{color:var(--green)}
 .box.ic .hs-ic{margin-bottom:10px}
-.cw{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;grid-auto-flow:dense}.cw-t:nth-child(1),.cw-t:nth-child(12){grid-column:span 2;grid-row:span 2}.cw-t{display:block;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.08)}.cw-t img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;transition:transform .25s}.cw-t:hover img{transform:scale(1.05)}
+.cw{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;grid-auto-flow:dense}.cw-t:nth-child(1),.cw-t:nth-child(12),.cw-t:nth-child(24){grid-column:span 2;grid-row:span 2}.happy{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;-webkit-overflow-scrolling:touch}.happy img{flex:none;height:300px;width:auto;border-radius:12px;scroll-snap-align:start;box-shadow:0 4px 14px rgba(0,0,0,.12)}@media(max-width:860px){.happy img{height:220px}}.cw-t{display:block;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.08)}.cw-t img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;transition:transform .25s}.cw-t:hover img{transform:scale(1.05)}
 .lb{display:none;position:fixed;inset:0;background:rgba(5,15,28,.88);z-index:100;align-items:center;justify-content:center;padding:16px;cursor:zoom-out}.lb:target{display:flex}.lb img{max-width:min(92vw,700px);max-height:88vh;border-radius:12px}
 @media(max-width:860px){.cw{grid-template-columns:repeat(2,1fr);gap:6px}}
 .hs-pic{display:block;width:calc(100% + 44px);margin:-22px -22px 16px;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:14px 14px 0 0}
@@ -422,6 +422,19 @@ def closings_wall():
             f'<div class="cw">{tiles}</div></div>{boxes}</section>')
 
 
+HAPPY = sorted(f for f in os.listdir(os.path.join(os.path.dirname(__file__) or ".", "img", "happy")) if f.endswith(".webp"))
+
+
+def happy_strip():
+    from PIL import Image
+    imgs = ""
+    for f in HAPPY:
+        w, h = Image.open(os.path.join(os.path.dirname(__file__) or ".", "img", "happy", f)).size
+        imgs += f'<img src="/img/happy/{f}" alt="Another happy seller with James Stallworth" width="{w}" height="{h}" loading="lazy">'
+    return (f'<section><div class="wrap"><p class="eyebrow">Another happy seller</p><h2>Sellers we\'ve helped</h2>'
+            f'<p class="intro">Swipe through a few of our favorite closing-day moments.</p><div class="happy">{imgs}</div></div></section>')
+
+
 ABOUT_VALUES = [("house", "We care", "We always do the right thing, even when it costs us."),
                 ("phone", "Honest, open communication", "You'll always know where things stand and what comes next."),
                 ("doc", "Accountability", "When we tell you a date and a number, that's what happens."),
@@ -439,6 +452,7 @@ page("/our-company/", "About Jax Cash Buyers | Local, Veteran-Owned Home Buyers"
 <p>Jax Cash Buyers buys houses directly from homeowners who need a fast, simple sale. That could be because of foreclosure, an inherited or probate property, a divorce, tired-landlord problems, or a house that needs more work than it's worth.</p>
 <p>When we commit to buying your house, the whole team is accountable for doing what we said. Whether that means working with a lender, the city on code violations, or the title company, we push until the job is done and you have your money.</p>
 <p><a class="call" href="tel:{TEL}">Call James's team: {PHONE}</a></p></div></div></section>"""
+     + happy_strip()
      + closings_wall()
      + '<section><div class="wrap"><p class="eyebrow">Our values</p><h2>What we stand for</h2><div class="grid3">'
      + "".join(f'<div class="box ic"><span class="hs-ic">{icon(IC[k])}</span><h3>{t}</h3><p>{d}</p></div>' for k, t, d in ABOUT_VALUES)
