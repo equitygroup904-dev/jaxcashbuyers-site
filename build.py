@@ -18,7 +18,7 @@ AREAS = ["Jacksonville", "Jacksonville Beach", "Atlantic Beach", "Neptune Beach"
 
 BUSINESS_SCHEMA = {
     "@context": "https://schema.org", "@type": "LocalBusiness", "@id": SITE + "/#business",
-    "name": "Jax Cash Buyers", "url": SITE + "/", "telephone": TEL,
+    "name": "Jax Cash Buyers", "url": SITE + "/", "telephone": TEL, "logo": SITE + "/img/logo-icon-512.png",
     "image": SITE + "/img/og-jax-cash-buyers.jpg",
     "priceRange": "$$",
     "address": {"@type": "PostalAddress", "streetAddress": ADDR["street"], "addressLocality": ADDR["city"],
@@ -34,7 +34,7 @@ CSS = """
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);line-height:1.6;background:#fff}
 a{color:var(--green-d)}.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
 .top{background:var(--navy);color:#fff}.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;flex-wrap:wrap}
-.logo{color:#fff;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:.3px}.logo span{color:#7fd6a1}
+.logo{color:#fff;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:.3px;display:flex;align-items:center;gap:10px}.logo img{height:40px;width:auto;background:#fff;border-radius:9px;padding:4px 6px}.logo span{color:#7fd6a1}
 .nav{display:flex;gap:18px;flex-wrap:wrap}.nav a{color:#dbe6f2;text-decoration:none;font-size:15px}.nav a:hover{color:#fff}
 .call{background:var(--green);color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:8px;white-space:nowrap}
 .hero{background:linear-gradient(135deg,rgba(15,42,71,.88) 0%,rgba(23,61,102,.78) 100%),url(/img/jax-skyline-hero.webp) center 60%/cover no-repeat #0f2a47;color:#fff;padding:48px 0}.hero.plain{background:linear-gradient(135deg,#0f2a47 0%,#173d66 100%)}
@@ -187,7 +187,7 @@ def shell(slug, title, desc, body, extra_schema=None, robots="index,follow"):
 <meta name="msvalidate.01" content="3C94BA8566B5E48C0E3BF4FB275CA0AA">
 {ld}"""
     body_html = f"""<style>{CSS}</style>
-<header class="top"><div class="wrap"><a class="logo" href="/">Jax <span>Cash</span> Buyers</a><nav class="nav">{nav}</nav>
+<header class="top"><div class="wrap"><a class="logo" href="/"><img src="/img/logo-mark.png" alt="" width="46" height="40">Jax <span>Cash</span> Buyers</a><nav class="nav">{nav}</nav>
 <a class="call" href="tel:{TEL}">{PHONE}</a></div></header>
 {body}
 <footer><div class="wrap cols"><div><b style="color:#fff">Jax Cash Buyers</b><br>{ADDR['street']}<br>{ADDR['city']}, FL {ADDR['zip']}<br>
