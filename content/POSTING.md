@@ -50,7 +50,7 @@ Rotate through these in order. Look at the newest file in `content/posts/` (its 
 ## Cover image (every post)
 `python3 tools/make_cover.py <topic> "<title>" img/blog/<url-slug>.jpg`
 It makes a 1200x630 card: a photo for the topic (img/blog-bg/), the title, a green topic label, James's photo in a
-circle and the phone number (add `--no-phone` for the Google copy). Open the image and check the title is fully visible and readable before publishing.
+circle and the phone number (Website + Facebook only; Google uses the plain topic photo, see Publish step 4). Open the image and check the title is fully visible and readable before publishing.
 Never use photos of sellers or anyone other than James, and never AI-generate images of real people.
 
 ## Monthly Google offer (separate task)
@@ -73,11 +73,12 @@ own cover `img/blog/offer-YYYY-MM.jpg` made by `python3 tools/make_cover.py gene
    - One `create-post` per platform (so each keeps its own caption): type "post", status "scheduled",
      scheduleDate = now + 15 minutes (UTC ISO), media [{url: "https://www.jaxcashbuyers.com/img/blog/<slug>.jpg", type: "image/jpeg"}],
      userId = James Stallworth's GHL user id (look it up with the users operations; if it can't be found, try without it).
-   - GOOGLE: NEVER put a phone number in the Google caption or on the Google image. Google rejects Business
-     Profile posts that contain a phone number (a post was rejected for this on 10/30/2026); the "Call now"
-     button carries the phone. Make a Google-only cover with
-     `python3 tools/make_cover.py <topic> "<title>" img/blog/<url-slug>-gmb.jpg --no-phone`, commit it with the post,
-     and use https://www.jaxcashbuyers.com/img/blog/<url-slug>-gmb.jpg as the Google media.
+   - GOOGLE: NEVER put a phone number in the Google caption or image, and NEVER use the title-card cover on Google.
+     Google rejected two probate posts on 10/30–11/1/2026: the first had the phone, the second had the text-heavy
+     title card (no phone). Posts that got approved used real photos with no text overlay. For Google, copy the topic's
+     plain photo: `cp img/blog-bg/<topic>.jpg img/blog/gmb-<url-slug>.jpg` and also into `docs/img/blog/`, commit it,
+     and use https://www.jaxcashbuyers.com/img/blog/gmb-<url-slug>.jpg as the Google media. Keep the caption simple:
+     no legal/attorney wording, no prices, no phone, no URL in the text.
    - Google caption: 2–3 sentences (under 1,400 characters) summarizing the post, ending with "Read the full guide on
      our website." No phone number, no "call/text us at", no URL in the text. gmbPostDetails {gmbEventType "STANDARD",
      actionType "learn_more", url: <post URL>} on TUESDAY posts; on FRIDAY posts use actionType "call" (Google shows a
