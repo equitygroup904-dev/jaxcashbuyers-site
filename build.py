@@ -24,7 +24,7 @@ BUSINESS_SCHEMA = {
     "address": {"@type": "PostalAddress", "streetAddress": ADDR["street"], "addressLocality": ADDR["city"],
                 "addressRegion": "FL", "postalCode": ADDR["zip"], "addressCountry": "US"},
     "areaServed": [{"@type": "City", "name": a + ", FL"} for a in AREAS],
-    "foundingDate": "2007",
+    "foundingDate": "2016",
     "sameAs": ["https://www.facebook.com/JaxCashBuyers/", "https://www.instagram.com/jaxcashbuyers/",
                "https://www.linkedin.com/company/american-equity-group-llc/", "https://www.twitter.com/JaxCashBuyers/"],
 }
@@ -57,6 +57,17 @@ table.cmp th{background:var(--navy);color:#fff}table.cmp td:last-child{font-weig
 details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}summary{font-weight:700;cursor:pointer}
 footer{background:#0b1f35;color:#b9c6d4;padding:36px 0;font-size:15px}footer a{color:#dbe6f2}footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px}
 .formslot{min-height:420px}.legal{max-width:820px}
+.eyebrow{color:var(--green);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 6px}.intro{color:var(--mute);font-size:18px;max-width:680px;margin:0 0 28px}
+.stats{background:var(--navy);color:#fff;padding:22px 0}.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center}.stats b{display:block;font-size:30px;line-height:1.1;color:#7fd6a1}.stats span{font-size:14px;color:#dbe6f2}
+.hsteps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:22px;counter-reset:s}
+.hs{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;position:relative;box-shadow:0 4px 16px rgba(15,42,71,.06)}.hs h3{margin:4px 0 8px}.hs p{margin:0 0 12px;color:var(--mute)}
+.hs-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.hs-n{font-size:44px;font-weight:800;line-height:1;color:var(--line)}
+.hs-ic{display:inline-flex;width:52px;height:52px;border-radius:12px;background:#e8f5ed;color:var(--green-d);align-items:center;justify-content:center}
+.checks.dark{margin:0;font-size:15px}.checks.dark li{margin:4px 0}.checks.dark li:before{color:var(--green)}
+.box.ic .hs-ic{margin-bottom:10px}
+.hs-pic{display:block;width:calc(100% + 44px);margin:-22px -22px 16px;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:14px 14px 0 0}
+.meet{display:grid;grid-template-columns:240px 1fr;gap:36px;align-items:center}.meet img{width:240px;height:240px;object-fit:cover;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+@media(max-width:860px){.hsteps,.meet{grid-template-columns:1fr}.stats .wrap{grid-template-columns:1fr 1fr}.meet img{width:180px;height:180px}}
 .stickycall{display:none}
 @media(max-width:860px){.hero .wrap,.grid3,.grid2,footer .cols{grid-template-columns:1fr}.hero h1{font-size:31px}h2{font-size:25px}.nav{display:none}
  .stickycall{display:block;position:fixed;left:0;right:0;bottom:0;background:var(--green);color:#fff;text-align:center;font-weight:800;padding:14px;text-decoration:none;z-index:50}body{padding-bottom:52px}}
@@ -177,7 +188,7 @@ def shell(slug, title, desc, body, extra_schema=None, robots="index,follow"):
 <a class="call" href="tel:{TEL}">{PHONE}</a></div></header>
 {body}
 <footer><div class="wrap cols"><div><b style="color:#fff">Jax Cash Buyers</b><br>{ADDR['street']}<br>{ADDR['city']}, FL {ADDR['zip']}<br>
-<a href="tel:{TEL}">{PHONE}</a> · <a href="mailto:{EMAIL}">{EMAIL}</a><p>Local, veteran-owned home buyers helping North Florida homeowners since 2007.</p></div>
+<a href="tel:{TEL}">{PHONE}</a> · <a href="mailto:{EMAIL}">{EMAIL}</a><p>Local, veteran-owned home buyers helping North Florida homeowners since 2016.</p></div>
 <div><b style="color:#fff">Sell your house</b><br><a href="/get-a-cash-offer-today/">Get a cash offer</a><br><a href="/how-we-buy-houses/">How it works</a><br><a href="/avoiding-foreclosure/">Foreclosure</a><br><a href="/selling-inherited-home/">Inherited house</a><br><a href="/selling-house-during-probate/">Probate</a><br><a href="/selling-home-during-divorce/">Divorce</a></div>
 <div><b style="color:#fff">Company</b><br><a href="/our-company/">About</a><br><a href="/testimonials/">Reviews</a><br><a href="/faq/">FAQ</a><br><a href="/blog/">Blog</a><br><a href="/contact-us/">Contact</a><br><a href="/privacy-policy/">Privacy</a> · <a href="/terms-and-conditions/">Terms</a></div></div>
 <div class="wrap" style="margin-top:18px;font-size:13px">© 2026 Jax Cash Buyers. We are home buyers, not real estate agents.</div></footer>
@@ -199,10 +210,10 @@ page("/", "Sell My House Fast Jacksonville FL | Cash Offer in 24 Hrs",
      "Sell your Jacksonville house fast for cash. Fair offer in 24 hours, no repairs, no commissions, close in as little as 7 days. Call (904) 750-3565.",
      hero("Sell Your House Fast in Jacksonville for Cash",
           "Get a fair, as-is cash offer in 24 hours. Skip the agents, repairs and months of waiting.",
-          ["No repairs or cleaning", "No commissions or fees. We pay closing costs", "Close in as little as 7 days, or on your date", "Local and veteran-owned since 2007"])
+          ["No repairs or cleaning", "No commissions or fees. We pay closing costs", "Close in as little as 7 days, or on your date", "Local and veteran-owned since 2016"])
      + steps()
      + """<section><div class="wrap grid2"><div><h2>Local Jacksonville home buyers you can trust</h2>
-<p>Jax Cash Buyers is a local real estate company owned by James Stallworth, a Navy veteran. Since 2007 we've bought houses all over North Florida, from the Beaches to Middleburg and from Yulee to St. Augustine, and we've been part of more than 475 transactions.</p>
+<p>Jax Cash Buyers is a local real estate company owned by James Stallworth, a Navy veteran. Since 2016 we've bought houses all over North Florida, from the Beaches to Middleburg and from Yulee to St. Augustine, and we've been part of more than 475 transactions.</p>
 <p>We're not agents and we don't list your house. We buy it ourselves, with our own cash, as-is. That means no showings, no repair requests, no waiting on a buyer's loan and no commission coming out of your check.</p>
 <p>Behind on payments, inherited a house, dealing with tenants, divorce, code violations or a house that needs more work than it's worth? We've seen it all, and we can usually make an offer on any house in any condition.</p></div>
 <div><h2>What you get</h2><ul class="checks" style="color:var(--ink)"><li>A written cash offer, usually within 24 hours</li><li>No obligation. Take it or leave it</li><li>A closing date you choose</li><li>A local, neutral title company handles closing</li><li>Take what you want and leave the rest behind</li></ul>
@@ -246,18 +257,110 @@ page("/we-buy-houses-jacksonville-florida/", "We Buy Houses Jacksonville Florida
      + steps() + areas_block() + cta())
 
 # ---------- HOW IT WORKS ----------
-page("/how-we-buy-houses/", "How We Buy Houses in Jacksonville | Simple 3-Step Process",
+def icon(path):
+    return f'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{path}</svg>'
+
+
+IC = {
+    "phone": '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>',
+    "house": '<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/>',
+    "doc": '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/>',
+    "key": '<circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.3-9.3M17 6l3 3M15 8l2 2"/>',
+    "chart": '<path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/>',
+    "tool": '<path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 8-8-1.3-1.3a4 4 0 0 0-5-5L13 5z"/><path d="M3 21l6-6"/>',
+    "pin": '<path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>',
+}
+
+HIW_STEPS = [
+    ("phone", "Today · 2 minutes", "Tell us about the house",
+     f"Fill out the short form or call {PHONE}. A real person from our local team calls you back.",
+     ["The address and rough condition", "Your timeline and why you're selling", "Any mortgage, liens or back taxes"]),
+    ("house", "At a time that works for you", "One short walkthrough",
+     "We come out once, at a time that works for you. Don't clean, paint or stage anything. We've seen it all.",
+     ["Just one visit, no showings", "No cleaning or repairs first", "Tenants or belongings inside are fine"]),
+    ("doc", "Usually within 24 hours", "Get a written cash offer",
+     "We send you a written all-cash offer and walk you through exactly how we got the number. No pressure, no obligation.",
+     ["Based on repairs, location and nearby sales", "Compare it to listing if you want", "Take your time deciding"]),
+    ("key", "As soon as 7 days", "Close on your date and get paid",
+     "If you say yes, a local, neutral title company handles payoffs, liens and paperwork. You sign and get paid at closing.",
+     ["You pick the closing date", "We pay normal closing costs", "Take what you want, leave the rest"]),
+]
+HIW_FAQS = [
+    ("How long does the whole process take?", "Most sellers get a written offer within 24 hours of the walkthrough. Closing can be as little as 7 days once title is clear, or on whatever date works for you."),
+    ("Do I have to clean or fix anything first?", "No. We buy as-is. Take what you want and leave the rest behind."),
+    ("Who handles the paperwork and payoffs?", "A local, neutral title company. They pay off your mortgage and any liens at closing and send you the rest."),
+    ("What if I still owe on the house or I'm behind on payments?", "That's common. The mortgage and any liens are paid off at closing from the sale. Call us and we'll talk through your numbers."),
+    ("Am I locked in once I ask for an offer?", "No. The offer is free and there's no obligation until you sign a purchase agreement."),
+]
+
+
+def hiw_steps():
+    cards = ""
+    for i, (ic, when, t, d, pts) in enumerate(HIW_STEPS, 1):
+        li = "".join(f"<li>{p}</li>" for p in pts)
+        pic = ""
+        for ext in ("webp", "jpg", "png"):
+            if os.path.exists(os.path.join(os.path.dirname(__file__) or ".", "img", f"hiw-step{i}.{ext}")):
+                pic = f'<img class="hs-pic" src="/img/hiw-step{i}.{ext}" alt="Step {i}: {esc(t)}" width="600" height="400" loading="lazy">'
+                break
+        cards += (f'<li class="hs">{pic}<div class="hs-top"><span class="hs-n">{i}</span><span class="hs-ic">{icon(IC[ic])}</span></div>'
+                  f'<div class="step">{when}</div><h3>{t}</h3><p>{d}</p><ul class="checks dark">{li}</ul></li>')
+    return (f'<section><div class="wrap"><p class="eyebrow">The process</p><h2>Four steps from first call to cash at closing</h2>'
+            f'<p class="intro">No agents, no showings, no surprises. Here\'s exactly what happens and when.</p><ol class="hsteps">{cards}</ol>'
+            f'<p style="text-align:center;margin-top:26px"><a class="call" href="#offer">Start Step 1 Now</a></p></div></section>')
+
+
+def hiw_stats():
+    s = [("2016", "Buying houses since"), ("475+", "Transactions"), ("24 hrs", "Typical offer time"), ("7 days", "Fastest closing")]
+    cells = "".join(f'<div><b>{a}</b><span>{b}</span></div>' for a, b in s)
+    return f'<div class="stats"><div class="wrap">{cells}</div></div>'
+
+
+def hiw_offer():
+    f = [("chart", "Recent sales nearby", "What similar houses close by have actually sold for, not list prices or online estimates."),
+         ("tool", "Repairs it needs", "Roof, HVAC, kitchens, baths, foundation. We price the work so you don't have to do it."),
+         ("pin", "Location and costs", "The neighborhood, plus the costs of buying, holding and reselling the house.")]
+    cards = "".join(f'<div class="box ic"><span class="hs-ic">{icon(IC[k])}</span><h3>{t}</h3><p>{d}</p></div>' for k, t, d in f)
+    return (f'<section class="alt"><div class="wrap"><p class="eyebrow">Your offer</p><h2>How we figure your offer</h2>'
+            f'<p class="intro">No mystery numbers. We\'ll show you the sales we used and the repairs we priced, so you can check our math.</p>'
+            f'<div class="grid3">{cards}</div></div></section>')
+
+
+def hiw_james():
+    return f"""<section><div class="wrap meet"><img src="/img/james-stallworth.jpg" alt="James Stallworth, owner of Jax Cash Buyers, holding a SOLD sign" width="240" height="240" loading="lazy">
+<div><p class="eyebrow">Who you'll work with</p><h2>Local, veteran-owned, and accountable</h2>
+<p>Jax Cash Buyers is owned by James Stallworth, a Navy veteran. We've been buying houses across North Florida since 2016, from the Beaches to Middleburg and from Yulee to St. Augustine.</p>
+<p>We're not a national call center. Our office is on Touchton Road, and when we tell you a date and a number, that's what happens.</p>
+<p><a class="call" href="tel:{TEL}">Call {PHONE}</a></p></div></div></section>"""
+
+
+hiw_faq_html = "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in HIW_FAQS)
+hiw_schema = [
+    {"@context": "https://schema.org", "@type": "HowTo", "name": "How to sell your house to Jax Cash Buyers",
+     "totalTime": "P7D",
+     "step": [{"@type": "HowToStep", "position": i, "name": t, "text": d} for i, (_, _, t, d, _) in enumerate(HIW_STEPS, 1)]},
+    {"@context": "https://schema.org", "@type": "FAQPage",
+     "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in HIW_FAQS]},
+]
+page("/how-we-buy-houses/", "How We Buy Houses in Jacksonville | Cash Offer in 24 Hours",
      "See how Jax Cash Buyers buys houses in Jacksonville: tell us about the house, get a cash offer in 24 hours, and close on your date. No fees.",
-     hero("How Our Home Buying Process Works",
-          "Three simple steps from first call to cash at closing, on your schedule.",
-          ["Offer usually within 24 hours", "Close in as little as 7 days", "Local title company closing", "No fees or commissions"], form=False)
-     + steps()
-     + """<section class="alt"><div class="wrap"><h2>The details</h2>
-<h3>1. Tell us about your house</h3><p>Fill out our short form or call (904) 750-3565. We'll ask about the address, condition, your timeline and any mortgage or liens. Everything stays confidential.</p>
-<h3>2. One walkthrough, then a written offer</h3><p>We schedule a short visit at a time that works for you. We look at repairs, the location and recent sales of similar homes nearby, and then give you a fair all-cash offer, usually within 24 hours. There's no pressure and no obligation.</p>
-<h3>3. You pick the closing date</h3><p>If you accept, we open title with a local, neutral title company. They handle payoffs, liens and paperwork. You show up, sign, and get paid. That can be as soon as 7 days, or weeks or months out if you need time to move.</p>
-<h3>What you don't have to do</h3><ul><li>No repairs, painting or cleaning</li><li>No showings or open houses</li><li>No commissions or closing costs</li><li>No waiting on a buyer's bank</li></ul></div></section>"""
-     + testimonials(2) + cta())
+     hero("How Selling Your House to Us Works",
+          "One call, one walkthrough, one written cash offer. You pick the closing date.",
+          ["Written offer usually within 24 hours", "Close in as little as 7 days, or on your date", "Local, neutral title company closing", "No fees, no commissions, no repairs"])
+     + hiw_stats() + hiw_steps() + hiw_offer() + hiw_james()
+     + """<section class="alt"><div class="wrap"><p class="eyebrow">Skip the hassle</p><h2>What you don't have to do</h2><div class="grid3">
+<div class="box"><h3>Repairs and clean-out</h3><p>No painting, fixing or hauling. We buy as-is, and you leave behind what you don't want.</p></div>
+<div class="box"><h3>Showings</h3><p>No open houses, lockboxes or strangers walking through. Just one short visit.</p></div>
+<div class="box"><h3>Commissions and fees</h3><p>No agent commission, and we pay normal closing costs.</p></div>
+<div class="box"><h3>Waiting on a bank</h3><p>We buy with cash, so there's no buyer loan, appraisal or financing to fall through.</p></div>
+<div class="box"><h3>Months of holding costs</h3><p>No more mortgage, taxes, insurance and utilities while a listed house sits.</p></div>
+<div class="box"><h3>Wondering if it'll close</h3><p>No financing contingency. When we sign, we're ready to buy.</p></div>
+</div></div></section>"""
+     + f"""<section><div class="wrap"><p class="eyebrow">Compare</p><h2>Our process vs. listing with an agent</h2>{compare_table()}
+<p style="color:var(--mute);font-size:14px;margin-top:10px">Agent figures are typical ranges and vary by sale. <a href="/compare/">See the full comparison &rarr;</a></p></div></section>"""
+     + testimonials(4)
+     + f'<section class="alt"><div class="wrap" style="max-width:860px"><p class="eyebrow">Questions</p><h2>Questions about the process</h2>{hiw_faq_html}<p style="margin-top:14px"><a href="/faq/">More answers &rarr;</a></p></div></section>'
+     + cta(), schema=hiw_schema)
 
 # ---------- COMPARE ----------
 page("/compare/", "Sell to an Investor vs. List With an Agent | Jacksonville FL",
@@ -302,8 +405,8 @@ page("/testimonials/", "Reviews | What Sellers Say About Jax Cash Buyers",
 
 # ---------- ABOUT ----------
 page("/our-company/", "About Jax Cash Buyers | Local, Veteran-Owned Home Buyers",
-     "Jax Cash Buyers is a local, veteran-owned Jacksonville home buying company. Since 2007 we've helped homeowners sell fast for a fair price.",
-     hero("About Jax Cash Buyers", "Local, veteran-owned home buyers helping North Florida homeowners since 2007.",
+     "Jax Cash Buyers is a local, veteran-owned Jacksonville home buying company. Since 2016 we've helped homeowners sell fast for a fair price.",
+     hero("About Jax Cash Buyers", "Local, veteran-owned home buyers helping North Florida homeowners since 2016.",
           ["Owned by James Stallworth, Navy veteran", "475+ transactions", "Based in Jacksonville"], form=False)
      + """<section><div class="wrap grid2"><div><h2>Who we are</h2><p>Jax Cash Buyers buys houses directly from homeowners who need a fast, simple sale. That could be because of foreclosure, an inherited or probate property, a divorce, tired-landlord problems, or a house that needs more work than it's worth.</p>
 <p>When we commit to buying your house, the whole team is accountable for doing what we said. Whether that means working with a lender, the city on code violations, or the title company, we push until the job is done and you have your money.</p></div>
