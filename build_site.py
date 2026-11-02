@@ -63,7 +63,7 @@ def doc(head, body, extra_css=""):
     return (f"<!doctype html><html lang='en'><head><meta charset='utf-8'>"
             f"<meta name='viewport' content='width=device-width,initial-scale=1'>"
             f"<link rel='preconnect' href='https://fonts.googleapis.com'><link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap' rel='stylesheet'>"
-            f"<link rel='icon' href='/img/favicon-64.png' type='image/png'><link rel='apple-touch-icon' href='/img/apple-touch-icon.png'>\n{head}\n"
+            f"<link rel='icon' href='/img/favicon-64.png?v=2' type='image/png'><link rel='apple-touch-icon' href='/img/apple-touch-icon.png?v=2'>\n{head}\n"
             f"{'<style>'+extra_css+'</style>' if extra_css else ''}</head><body>\n{body}\n</body></html>")
 
 
