@@ -51,7 +51,7 @@ section{padding:52px 0}section.alt{background:var(--bg)}h2{font-size:30px;line-h
 table.cmp{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden}
 table.cmp th,table.cmp td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 table.cmp th{background:var(--navy);color:#fff}table.cmp td:last-child{font-weight:700;color:var(--green-d)}
-.quote{background:#fff;border-left:4px solid var(--green);padding:16px 18px;border-radius:8px}.quote b{display:block;margin-top:8px;color:var(--mute);font-weight:600}
+.quote{background:#fff;border-left:4px solid var(--green);padding:16px 18px;border-radius:8px}.quote b{display:flex;align-items:center;gap:10px;margin-top:12px;color:var(--mute);font-weight:600}.q-faces{display:inline-flex;flex-shrink:0}.q-faces img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.18)}.q-faces img+img{margin-left:-16px}
 .cta{background:var(--green);color:#fff;text-align:center;padding:44px 0}.cta h2{color:#fff}.cta a.btn{display:inline-block;background:#fff;color:var(--green-d);font-weight:800;padding:14px 22px;border-radius:10px;text-decoration:none;margin:6px}
 .areas{display:flex;flex-wrap:wrap;gap:10px;padding:0;list-style:none}.areas a{display:block;background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:999px;text-decoration:none;color:var(--ink)}
 details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}summary{font-weight:700;cursor:pointer}
@@ -148,7 +148,12 @@ def testimonials(n=4):
         ("Honest and transparent. I highly recommend James and his team.", "Wagner Roberts"),
         ("The whole experience was a pleasure and barely touched my busy schedule. Great communication while I was out of town.", "Walter Hinson"),
     ][:n]
-    cells = "".join(f'<div class="quote">{t}<b>— {who}</b></div>' for t, who in q)
+    def face(who):
+        slug = "".join(c if c.isalnum() else "-" for c in who.lower()).strip("-").replace("--", "-")
+        imgs = [f for f in (slug, slug + "-2") if os.path.exists(os.path.join(os.path.dirname(__file__) or ".", "img", "sellers", f + ".webp"))]
+        return '<span class="q-faces">' + "".join(
+            f'<img src="/img/sellers/{f}.webp" alt="{who} at closing" width="56" height="56" loading="lazy">' for f in imgs) + '</span>' if imgs else ''
+    cells = "".join(f'<div class="quote">{t}<b>{face(who)}— {who}</b></div>' for t, who in q)
     return f'<section><div class="wrap"><h2>What sellers say</h2><div class="grid2">{cells}</div><p style="margin-top:16px"><a href="/testimonials/">Read more reviews &rarr;</a></p></div></section>'
 
 
