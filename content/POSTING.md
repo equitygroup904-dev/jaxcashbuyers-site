@@ -1,5 +1,9 @@
 # SEO blog posts — instructions for the automated writer
 
+> **GOOGLE BUSINESS PAUSED (James, 11/3/2026):** the Google Business Profile was temporarily restricted because of a post.
+> Until James says to turn it back on: share blog posts to **Facebook only**, make no `gmb-` images, post no monthly Google offer,
+> and say "Google Business paused" instead of ✅/❌ in the Slack message. Everything below about Google is on hold.
+
 Two new posts per week (Tuesday and Friday), published automatically and shared to Google Business Profile and
 Facebook (James approved auto-publish with no review, 10/27/2026; 2 per week + GMB/Facebook sharing, 10/29/2026).
 
