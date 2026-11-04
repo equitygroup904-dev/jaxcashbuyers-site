@@ -116,12 +116,20 @@ def cta(text="Get a fair cash offer on your house this week."):
 <a class="btn" href="/get-a-cash-offer-today/">Get My Cash Offer</a><a class="btn" href="tel:{TEL}">Call {PHONE}</a></div></section>"""
 
 
-def steps():
-    return """<section><div class="wrap"><h2>How it works</h2><div class="grid3">
+HIW_GRAPHIC = ('<img class="hiw-graphic" src="/img/how-it-works-infographic.webp" width="1408" height="768" loading="lazy" '
+               'style="display:block;width:100%;height:auto;margin:24px 0 0;border-radius:14px;box-shadow:0 6px 20px rgba(15,42,71,.10)" '
+               'alt="Jax Cash Buyers 3-step process: 1. Fill out the form or call us in 2 minutes. '
+               '2. Get a written all-cash offer within 24 hours. 3. Close at a trusted title company in as little as 7 days. '
+               'Call (904) 750-3565.">')
+
+
+def steps(graphic=False):
+    pic = HIW_GRAPHIC if graphic else ""
+    return f"""<section><div class="wrap"><h2>How it works</h2><div class="grid3">
 <div class="box"><div class="step">Step 1</div><h3>Tell us about the house</h3><p>Fill out the short form or call us. It takes about two minutes.</p></div>
 <div class="box"><div class="step">Step 2</div><h3>Get a fair cash offer</h3><p>We look at the house, the repairs and recent sales nearby, then give you a written all-cash offer, usually within 24 hours.</p></div>
 <div class="box"><div class="step">Step 3</div><h3>Close on your date</h3><p>We close at a local title company. Close in as little as 7 days, or whenever works for you.</p></div>
-</div><p style="margin-top:18px"><a href="/how-we-buy-houses/">See our full process &rarr;</a></p></div></section>"""
+</div>{pic}<p style="margin-top:18px"><a href="/how-we-buy-houses/">See our full process &rarr;</a></p></div></section>"""
 
 
 def situations():
@@ -219,7 +227,7 @@ page("/", "Sell My House Fast Jacksonville FL | Cash Offer in 24 Hrs",
      hero("Sell Your House Fast in Jacksonville for Cash",
           "Get a fair, as-is cash offer in 24 hours. Skip the agents, repairs and months of waiting.",
           ["No repairs or cleaning", "No commissions or fees. We pay closing costs", "Close in as little as 7 days, or on your date", "Local and veteran-owned since 2016"])
-     + steps()
+     + steps(graphic=True)
      + """<section><div class="wrap grid2"><div><h2>Local Jacksonville home buyers you can trust</h2>
 <p>Jax Cash Buyers is a local real estate company owned by James Stallworth, a Navy veteran. Since 2016 we've bought houses all over North Florida, from the Beaches to Middleburg and from Yulee to St. Augustine, and we've been part of more than 475 transactions.</p>
 <p>We're not agents and we don't list your house. We buy it ourselves, with our own cash, as-is. That means no showings, no repair requests, no waiting on a buyer's loan and no commission coming out of your check.</p>
