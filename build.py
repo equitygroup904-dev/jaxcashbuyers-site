@@ -26,7 +26,7 @@ BUSINESS_SCHEMA = {
     "areaServed": [{"@type": "City", "name": a + ", FL"} for a in AREAS],
     "foundingDate": "2016",
     "sameAs": ["https://www.facebook.com/JaxCashBuyers/", "https://www.instagram.com/jaxcashbuyers/",
-               "https://www.linkedin.com/company/american-equity-group-llc/", "https://www.twitter.com/JaxCashBuyers/"],
+               "https://www.linkedin.com/company/american-equity-group-llc/", "https://equitygroupjax.com/", "https://www.twitter.com/JaxCashBuyers/"],
 }
 
 CSS = """
@@ -207,7 +207,7 @@ def shell(slug, title, desc, body, extra_schema=None, robots="index,follow"):
 <a href="tel:{TEL}">{PHONE}</a><p>Local, veteran-owned home buyers helping North Florida homeowners since 2016.</p></div>
 <div><b style="color:#fff">Sell your house</b><br><a href="/get-a-cash-offer-today/">Get a cash offer</a><br><a href="/how-we-buy-houses/">How it works</a><br><a href="/avoiding-foreclosure/">Foreclosure</a><br><a href="/selling-inherited-home/">Inherited house</a><br><a href="/selling-house-during-probate/">Probate</a><br><a href="/selling-home-during-divorce/">Divorce</a></div>
 <div><b style="color:#fff">Company</b><br><a href="/our-company/">About</a><br><a href="/testimonials/">Reviews</a><br><a href="/faq/">FAQ</a><br><a href="/blog/">Blog</a><br><a href="/contact-us/">Contact</a><br><a href="/privacy-policy/">Privacy</a> · <a href="/terms-and-conditions/">Terms</a></div></div>
-<div class="wrap" style="margin-top:18px;font-size:13px">© 2026 Jax Cash Buyers. We are home buyers, not real estate agents.</div></footer>
+<div class="wrap" style="margin-top:18px;font-size:13px">© 2026 Jax Cash Buyers. We are home buyers, not real estate agents. Real estate investor? See our off-market deals at <a href="https://equitygroupjax.com/">American Equity Group</a>.</div></footer>
 <a class="stickycall" href="tel:{TEL}">Call {PHONE}</a>"""
     return head, body_html
 
