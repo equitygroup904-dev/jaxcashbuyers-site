@@ -578,17 +578,18 @@ page("/privacy-policy/", "Privacy Policy | Jax Cash Buyers",
 <h3>Text messages</h3><p>If you agree to receive texts, message frequency varies and message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of any purchase. Mobile numbers and SMS consent are not shared with third parties or affiliates for marketing purposes.</p>
 <h3>Sharing</h3><p>We share information only with service providers who help us operate (for example our CRM, title companies and closing agents) or when required by law.</p>
 <h3>Your choices</h3><p>You can ask us to update or delete your information or stop contacting you at any time by calling {PHONE}.</p>
-<h3>Contact</h3><p>{ADDR['street']}, {ADDR['city']}, FL {ADDR['zip']}</p></div></section>""")
+<h3>Contact</h3><p>Jax Cash Buyers<br>{ADDR['street']}, {ADDR['city']}, FL {ADDR['zip']}<br>{PHONE}</p></div></section>""")
 
 page("/terms-and-conditions/", "Terms and Conditions | Jax Cash Buyers",
      "Terms and conditions for using jaxcashbuyers.com and receiving communications from Jax Cash Buyers.",
-     f"""<section><div class="wrap legal"><h1>Terms and Conditions</h1><p><i>Last updated: October 27, 2026</i></p>
+     f"""<section><div class="wrap legal"><h1>Terms and Conditions</h1><p><i>Last updated: November 10, 2026</i></p>
 <p>By using jaxcashbuyers.com you agree to these terms.</p>
 <h3>No offer or advice</h3><p>Content on this site is general information, not legal, tax or financial advice. Any offer to buy your property is made only in a written agreement signed by both parties.</p>
 <h3>We are buyers, not agents</h3><p>Jax Cash Buyers buys property directly and does not act as your real estate agent or broker.</p>
-<h3>Communications</h3><p>By submitting your information you agree that we may contact you by phone, text and email about your property. Message and data rates may apply. Reply STOP to opt out of texts. Consent is not a condition of purchase.</p>
+<h3>Communications</h3><p>By submitting your information you agree that we may contact you by phone, text and email about your property.</p>
+<h3>Text messaging terms</h3><p>If you check the SMS consent box on our form, Jax Cash Buyers may text you at the number you provide about your property inquiry, offers and appointments. Message frequency varies. Message and data rates may apply. Reply STOP to opt out at any time; you will get one message confirming you are unsubscribed. Reply HELP for help, or call {PHONE}. Carriers are not liable for delayed or undelivered messages. Consent to receive texts is not a condition of any purchase. See our <a href="/privacy-policy/">Privacy Policy</a> for how we handle your information; mobile numbers and SMS consent are never shared with third parties or affiliates for marketing purposes.</p>
 <h3>Limitation of liability</h3><p>This site is provided "as is." We are not liable for damages arising from its use.</p>
-<h3>Contact</h3><p>{PHONE}</p></div></section>""")
+<h3>Contact</h3><p>Jax Cash Buyers<br>{ADDR['street']}, {ADDR['city']}, FL {ADDR['zip']}<br>{PHONE}</p></div></section>""")
 
 # ---------- RESOURCES ----------
 page("/resource-page/", "Home Seller Resources | Jacksonville Foreclosure & Selling Help",
