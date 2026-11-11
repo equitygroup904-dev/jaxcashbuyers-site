@@ -570,15 +570,18 @@ page("/step-2/", "One More Step | Jax Cash Buyers",
 
 # ---------- LEGAL ----------
 page("/privacy-policy/", "Privacy Policy | Jax Cash Buyers",
-     "Privacy policy for Jax Cash Buyers: what information we collect, how we use it, and your text message and email choices.",
-     f"""<section><div class="wrap legal"><h1>Privacy Policy</h1><p><i>Last updated: October 27, 2026</i></p>
-<p>Jax Cash Buyers ("we," "us") respects your privacy. This policy explains what we collect on jaxcashbuyers.com and how we use it.</p>
-<h3>Information we collect</h3><p>Information you give us, such as your name, phone number, email and property address, and basic usage data like pages visited and browser type.</p>
-<h3>How we use it</h3><p>To respond to you, evaluate your property, make an offer, and send updates you've agreed to receive. We do not sell your personal information.</p>
-<h3>Text messages</h3><p>If you agree to receive texts, message frequency varies and message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of any purchase. Mobile numbers and SMS consent are not shared with third parties or affiliates for marketing purposes.</p>
-<h3>Sharing</h3><p>We share information only with service providers who help us operate (for example our CRM, title companies and closing agents) or when required by law.</p>
-<h3>Your choices</h3><p>You can ask us to update or delete your information or stop contacting you at any time by calling {PHONE}.</p>
-<h3>Contact</h3><p>Jax Cash Buyers<br>{ADDR['street']}, {ADDR['city']}, FL {ADDR['zip']}<br>{PHONE}</p></div></section>""")
+     "How Jax Cash Buyers collects, uses and protects your information on jaxcashbuyers.com, including text message consent and opt-out.",
+     f"""<section><div class="wrap legal"><h1>Privacy Policy</h1><p><i>Effective date: November 11, 2026</i></p>
+<p>Jax Cash Buyers ("we," "us," "our") operates jaxcashbuyers.com. This policy explains how we collect, use, and protect your information.</p>
+<h3>Information We Collect</h3><p>When you fill out a form, call, text, or email us, we may collect your name, phone number, email address, property address, and any details you choose to share about a property. We may also collect basic website data such as browser type, pages visited, and IP address through cookies and analytics tools.</p>
+<h3>How We Use Your Information</h3><p>We use your information to respond to your inquiries, evaluate your property and make you an offer, schedule appointments, send updates you have requested, and improve our website and services.</p>
+<h3>Text Messaging</h3><p>If you provide your phone number and consent, we may send you text messages about your property, appointments, and your inquiry. Message frequency varies. Message and data rates may apply. Reply STOP to opt out at any time, or HELP for help. <b>Mobile phone numbers and SMS consent are never shared with or sold to third parties or affiliates for marketing purposes.</b></p>
+<h3>Sharing Your Information</h3><p>We do not sell your personal information. We may share it only with service providers that help us run our business (such as our CRM, email, and website hosting providers), when required by law, or with your permission.</p>
+<h3>Data Security</h3><p>We use reasonable measures to protect your information, but no method of transmission over the internet is 100% secure.</p>
+<h3>Your Choices</h3><p>You may opt out of texts by replying STOP and out of emails by using the unsubscribe link. You may request that we update or delete your information by contacting us.</p>
+<h3>Children's Privacy</h3><p>Our website is not intended for anyone under 18, and we do not knowingly collect information from children.</p>
+<h3>Changes to This Policy</h3><p>We may update this policy from time to time. Changes will be posted on this page with a new effective date.</p>
+<h3>Contact Us</h3><p>Jax Cash Buyers<br>{ADDR['street']}, {ADDR['city']}, FL {ADDR['zip']}<br><a href="tel:{TEL}">{PHONE}</a></p></div></section>""")
 
 page("/terms-and-conditions/", "Terms and Conditions | Jax Cash Buyers",
      "Terms and conditions for using jaxcashbuyers.com and receiving communications from Jax Cash Buyers.",
