@@ -7,6 +7,7 @@ Tag Claude in Slack with one of these commands plus the info it needs. Each comm
 | `#LandARV` | Full spec-build analysis for a vacant lot — pulls sold comps + finished ARV, land sales / per-lot basis, and the max land price (MAO) you can pay and still hit your profit target. | Post `#LandARV` with a parcel link or address (e.g. `#LandARV 223 Herbert Douglas Dr` or a `search.ncpafl.com` parcel link). Only add build size, $/sqft, or margin if you want to override a default. | Build size 1,630 sqft · Build cost $175/sqft · Soft costs $25K · Carry/financing $35K · Selling costs $40K · Target profit 15% |
 | `#CONTRACT` | Prepares the seller's Purchase and Sale Agreement in GHL, sends James a review copy first, then e-sends it to the seller once James approves. | Copy the **#CONTRACT post template** below, fill it in, post it in `#acquisitions`, and tag Claude. James replies `send` in the thread to release it. | EMD $0 · Inspection 10 business days · Closing 30 days out (defaults pending James's OK) · Buyer: American Equity Group LLC · Closing agent: Patriot Title |
 | `#NEEDJAMES` | Flags a lead for James to handle personally and routes it to acquisitions. | Fires from the offer workflow (`seller-offer-range` skill) when a deal is out of the normal box: mobile/manufactured, multifamily, commercial, $400K+, out of area, large structural repairs, uncertain land value over ~$50K, or any subject-to / creative deal. Routes to Slack `#acquisitions` and GHL stage "Creative / Subto / NeedJames". | — |
+| `#NORESPONSE` | Starts the **No Response plan** on a seller who replied once and then went quiet: six spaced touches over a month, texts sent automatically, calls left to the rep. Closes the lead out to Went Dark at the end. | Post `#NORESPONSE` in the lead's `#acquisitions` thread after you've called twice on day one. Add one line with what you tried. `#NR` and `#NOREPLY` do the same thing. | Deal moves to Motivated Seller / Contacted, tag `np active` · texts day 0, 6, 13, 27 · rep calls day 0 (AM + PM), 6, 20 · closes out day 27 → NEW FOLLOW UP / Went Dark |
 
 ## `#LandARV` — what you get back
 
@@ -36,6 +37,45 @@ When you post `#LandARV` with a lot, Claude returns, in this order:
 - Target profit margin — default 15%
 
 > These are estimates — confirm build cost with your GC and ARV with an agent BPO before committing.
+
+## `#NORESPONSE` — the No Response plan
+
+**Use it for a seller who replied and then stopped answering.** They asked for an offer, agreed to a call, or asked a question — and now nothing. Those leads are too warm for the cold drip and too quiet to keep dialing every day.
+
+**Don't use it for a seller who has never replied.** That's still `#NOANSWER`, which parks the lead in NEW FOLLOW UP / No Contact and lets the drip work it. If you post `#NORESPONSE` on a lead with no inbound reply, Claude will say so in the thread and leave it alone.
+
+### How to post it
+
+In the lead's own `#acquisitions` thread, after your day-one calls:
+
+```
+#NORESPONSE
+Called: 2 (9:40a, 5:15p) | VM: no option | Texted: yes
+```
+
+The detail line is optional, but it's what tells us whether we're chasing a dead number. Everything else — address, seller, phone, which rep name they've already seen — Claude pulls from the thread and GHL.
+
+### What happens
+
+1. The deal moves to **Motivated Seller / Contacted** with the tag `np active`, so it stops being treated as a cold lead.
+2. Claude posts the schedule in the thread and sends the texts on the cadence. Every text is a no-oriented question — the easy answer is "no", and "no" re-opens the deal.
+3. You make the calls. React ☎️ on Claude's post each time you call. If a call day passes unmarked, Claude nudges the thread.
+4. **Any reply from the seller stops the plan.** Claude posts that it stopped; you call and post `#INFO` / `#APPT` / `#OFFER` as normal.
+5. Nothing after a month → the deal goes to **NEW FOLLOW UP / Went Dark** (every 2 weeks for 90 days, then Cold). Posting `#NORESPONSE` again on a lead that's already in the plan closes it out early.
+
+### The cadence
+
+| Day | Texts (automatic) | Calls (rep) |
+|---|---|---|
+| 0 | "tried you twice today on [street] — would it be a bad idea if I called you tomorrow around 10?" | Two calls, morning and early evening. Not back to back. |
+| 6 | "are you opposed to me putting a number together on [street] without seeing inside?" | One call |
+| 13 | "would it be unreasonable to ask for 3 minutes on [street]?" | — |
+| 20 | — | One call + voicemail |
+| 27 | "have you given up on selling [street]?" | — |
+
+Texts go out Mon–Sat, 8:00 AM–7:30 PM in the seller's time zone, one a day at most. A day that lands on a Sunday moves to Monday.
+
+**Before week 2, check the number.** If both day-one calls hit a dead line or the text failed, stop and work the other owner on the deed instead of burning a month on a bad number.
 
 ## `#CONTRACT` — sending a purchase agreement
 
