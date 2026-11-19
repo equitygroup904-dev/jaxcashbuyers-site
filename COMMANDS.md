@@ -6,7 +6,7 @@ Tag Claude in Slack with one of these commands plus the info it needs. Each comm
 |---|---|---|---|
 | `#LandARV` | Full spec-build analysis for a vacant lot — pulls sold comps + finished ARV, land sales / per-lot basis, and the max land price (MAO) you can pay and still hit your profit target. | Post `#LandARV` with a parcel link or address (e.g. `#LandARV 223 Herbert Douglas Dr` or a `search.ncpafl.com` parcel link). Only add build size, $/sqft, or margin if you want to override a default. | Build size 1,630 sqft · Build cost $175/sqft · Soft costs $25K · Carry/financing $35K · Selling costs $40K · Target profit 15% |
 | `CREATE PSA` | Sends the seller a Purchase and Sale Agreement through GHL (pre-signed by James, no review step). | Post in `#acquisitions` starting with `CREATE PSA` and the fields in the template below. Checked hourly, Mon–Sat 8 AM–7 PM ET. | Title company: Patriot or Duane · James CC'd |
-| `RESEND PSA` | Re-sends a PSA for the same address (pulls back the old copy first). | Reply `RESEND PSA` in the original `CREATE PSA` thread. | Without it, the same address won't re-send within 3 days |
+| `RESEND PSA` | Re-sends a PSA for the same address, with any changed terms (pulls back the old copy first). | Reply `RESEND PSA` in the original `CREATE PSA` thread, listing any fields that change. | Without it, the same address won't re-send within 3 days · Won't resend once the seller has signed |
 | `#NEEDJAMES` | Flags a lead for James to handle personally and routes it to acquisitions. | Fires from the offer workflow (`seller-offer-range` skill) when a deal is out of the normal box: mobile/manufactured, multifamily, commercial, $400K+, out of area, large structural repairs, uncertain land value over ~$50K, or any subject-to / creative deal. Routes to Slack `#acquisitions` and GHL stage "Creative / Subto / NeedJames". | — |
 
 ## `#LandARV` — what you get back
@@ -69,9 +69,20 @@ Inspection Period: (days)
 - Missing or mismatched info: you get a reply listing what's needed; answer in that thread.
 - Sent: `CONTRACT SENT` post in `#acquisitions` + "PSA SENT" in your thread. James is CC'd. Confirm receipt with the seller.
 
-## `RESEND PSA`
+## `RESEND PSA` — send a corrected or new copy
 
-Reply `RESEND PSA` in the original thread. A PSA for the same address won't re-send within 3 days without it; the old copy is pulled back first.
+Reply `RESEND PSA` in the original `CREATE PSA` thread. If something on the contract changes, list only the changed fields in the same reply, for example:
+
+```
+RESEND PSA
+Total Purchase Price: 95,000
+Cash to seller at closing: 94,000
+```
+
+- Anything you don't list stays the same. EMD + Cash at closing must still equal Total Purchase Price.
+- The old copy is pulled back first, so the seller can only sign the new one (named "rev 2", "rev 3", …).
+- If the seller already signed, it won't resend. Changes then need an addendum.
+- Checked on the same hourly schedule as `CREATE PSA`.
 
 ## `#CONTRACT` — retired
 
